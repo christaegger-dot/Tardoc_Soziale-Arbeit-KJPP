@@ -476,6 +476,44 @@
   }
   .note-icon { flex-shrink: 0; font-size: 16px; margin-top: 1px; }
 
+  /* ── DOWNLOAD BUTTONS ── */
+  .dl-bar {
+    position: fixed; bottom: 24px; right: 24px;
+    display: flex; flex-direction: column; gap: 10px;
+    z-index: 200;
+  }
+  .dl-btn {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 18px; border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 600;
+    cursor: pointer; border: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    transition: transform .15s, box-shadow .15s;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .dl-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.22); }
+  .dl-btn.primary { background: var(--navy); color: white; }
+  .dl-btn.secondary { background: var(--teal); color: white; }
+  .dl-btn svg { flex-shrink: 0; }
+
+  /* ── PRINT STYLES ── */
+  @media print {
+    .nav-bar, .dl-bar, .header::before, .header::after { display: none !important; }
+    body { background: white; font-size: 12px; }
+    .header { padding: 20px 24px; border-radius: 0; }
+    .main { padding: 20px 24px; }
+    .section { margin-bottom: 28px; page-break-inside: avoid; }
+    .card, .rule-card, .limit-box, .scenario-card, .decision-tree, .idt, .cheat-sheet {
+      box-shadow: none !important; page-break-inside: avoid;
+    }
+    .cheat-sheet { background: var(--navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .idt-q, .idt-branch-label, .idt-res, .budget-box, .cheat-item { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .section-title { font-size: 20px; }
+    a[href]::after { content: none; }
+  }
+
   @media (max-width: 600px) {
     .header h1 { font-size: 28px; }
     .card-grid-2, .card-grid-3, .do-dont { grid-template-columns: 1fr; }
@@ -488,6 +526,26 @@
 </style>
 </head>
 <body>
+
+<!-- DOWNLOAD BAR -->
+<div class="dl-bar">
+  <a class="dl-btn" style="background:#475569;color:white;" href="files/spickzettel-print.html" target="_blank">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    🗒 Spickzettel
+  </a>
+  <a class="dl-btn" style="background:#1d4ed8;color:white;" href="files/positionen-print.html" target="_blank">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    📋 Positionen
+  </a>
+  <a class="dl-btn secondary" href="files/verlaufseintrag-print.html" target="_blank">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    ✍️ Verlaufseintrag
+  </a>
+  <button class="dl-btn primary" onclick="window.print()">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>
+    Seite drucken
+  </button>
+</div>
 
 <!-- HEADER -->
 <div class="header">
