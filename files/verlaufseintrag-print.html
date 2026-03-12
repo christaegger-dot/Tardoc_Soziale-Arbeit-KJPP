@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verlaufseintrag-Vorlagen · Tarif-Kompass 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d1b2a;--teal:#0a7c71;--teal-l:#e6f4f2;--teal-m:#a7d9d5;
+  --blue:#1a4fa3;--blue-l:#eaf0fb;--blue-m:#a3bfe8;
+  --amber:#b85c00;--amber-l:#fef3e2;--amber-m:#e8c68a;
+  --rose:#c0103a;--rose-l:#fdf0f3;--rose-m:#f0b8c5;
+  --slate:#2d3748;--mid:#4a5568;--soft:#718096;--faint:#94a3b8;
+  --line:#dde3eb;--writeline:#e8edf5;--bg:#edf0f4;--paper:#fff;
+}
+body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 16px}
+.printbar{width:210mm;max-width:100%;background:white;border-radius:10px;padding:11px 20px;display:flex;align-items:center;gap:12px;margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.printbar-label{flex:1;font-size:12.5px;color:var(--soft)}
+.printbar-label strong{color:var(--ink)}
+.pbtn{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:7px;border:none;font-family:'Source Sans 3',sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;text-decoration:none}
+.pbtn-ghost{background:var(--bg);color:var(--mid);border:1px solid var(--line)}
+.pbtn-dark{background:var(--ink);color:white}
+.sheet{width:210mm;min-height:297mm;background:var(--paper);box-shadow:0 6px 32px rgba(0,0,0,.13);display:flex;flex-direction:column}
+
+/* masthead */
+.mast{background:var(--ink);padding:10mm 14mm 8mm;position:relative;overflow:hidden}
+.mast::after{content:'';position:absolute;right:0;top:0;bottom:0;width:40mm;background:linear-gradient(90deg,transparent,rgba(10,124,113,.18))}
+.mast-row{display:flex;justify-content:space-between;align-items:flex-start}
+.mast h1{font-family:'Playfair Display',serif;font-size:22pt;color:white;line-height:1.2}
+.mast h1 em{color:#4fd1c5;font-style:normal}
+.mast-sub{font-size:9pt;color:rgba(255,255,255,.5);font-weight:300;margin-top:3px}
+.mast-meta{text-align:right;font-size:8pt;color:rgba(255,255,255,.4);line-height:1.6;z-index:1;position:relative}
+.mast-meta strong{color:#4fd1c5;font-size:9pt;display:block;margin-bottom:2px}
+.mast-note{margin-top:5mm;font-size:8.5pt;color:rgba(255,255,255,.45);line-height:1.5;border-top:1px solid rgba(255,255,255,.1);padding-top:4mm}
+.mast-note strong{color:rgba(255,255,255,.7)}
+
+/* body */
+.body{flex:1;padding:7mm 14mm 7mm;display:flex;flex-direction:column;gap:5mm}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+
+/* template block */
+.tmpl{border-radius:8px;overflow:hidden;border:1.5px solid var(--line)}
+.tmpl-head{padding:7px 12px;display:flex;justify-content:space-between;align-items:center}
+.tmpl-head h3{font-size:10pt;font-weight:700;color:white;display:flex;align-items:center;gap:7px}
+.tmpl-head .ziffer{font-size:7.5pt;font-weight:700;background:rgba(255,255,255,.18);color:white;padding:2px 8px;border-radius:10px}
+.tmpl.g .tmpl-head{background:var(--teal)}
+.tmpl.l .tmpl-head{background:var(--blue)}
+.tmpl.p .tmpl-head{background:var(--amber)}
+.tmpl.k .tmpl-head{background:var(--rose)}
+.tmpl.w .tmpl-head{background:var(--mid)}
+.tmpl-hint{font-size:7.5pt;color:var(--soft);font-style:italic;padding:5px 12px 0;line-height:1.4;border-left:3px solid var(--line);margin:6px 12px 0}
+.tmpl.g .tmpl-hint{border-left-color:var(--teal-m)}
+.tmpl.l .tmpl-hint{border-left-color:var(--blue-m)}
+.tmpl.p .tmpl-hint{border-left-color:var(--amber-m)}
+.tmpl.k .tmpl-hint{border-left-color:var(--rose-m)}
+
+/* form fields */
+.tmpl-body{padding:6px 12px 10px}
+.meta-row{display:grid;gap:5mm;margin-bottom:6px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.meta-4{grid-template-columns:55mm 35mm 35mm 1fr}
+.meta-3{grid-template-columns:55mm 35mm 1fr}
+.meta-5{grid-template-columns:repeat(5,1fr)}
+.fld{display:flex;flex-direction:column;gap:2px}
+.fld-lbl{font-size:7pt;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);display:flex;align-items:center;gap:4px}
+.fld-req{color:var(--rose);font-size:9pt;line-height:1}
+.fld-opt{font-size:6.5pt;color:var(--faint);font-weight:400;text-transform:none;letter-spacing:0}
+.line{height:18px;border-bottom:1.5px solid var(--writeline)}
+.area{background:repeating-linear-gradient(to bottom,transparent,transparent 17px,var(--writeline) 17px,var(--writeline) 18.5px);height:37px}
+.area.lg{height:55px}
+.fld-row{margin-bottom:5px}
+.fld-row:last-child{margin-bottom:0}
+
+/* warning strip */
+.warn-strip{background:var(--amber-l);border-top:1.5px solid var(--amber-m);padding:5px 12px;font-size:8pt;color:#7a3a00;display:flex;gap:6px}
+
+/* full-width wegzeit */
+.wz-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5mm}
+
+/* callout */
+.co{border-radius:6px;padding:6px 10px;font-size:8.5pt;line-height:1.4;display:flex;gap:7px}
+.co.a{background:var(--amber-l);color:#7a3a00;border:1px solid var(--amber-m)}
+
+/* footer */
+.ft{border-top:1px solid var(--line);padding:4mm 14mm;display:flex;justify-content:space-between}
+.ft span{font-size:7pt;color:var(--soft)}
+
+@media print{
+  body{background:white;padding:0}
+  .printbar{display:none}
+  .sheet{box-shadow:none;min-height:auto}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  @page{size:A4;margin:0}
+}
+</style>
+</head>
+<body>
+
+<div class="printbar">
+  <div class="printbar-label"><strong>Verlaufseintrag-Vorlagen</strong> · 1 Seite A4 · Tarif-Kompass 2026</div>
+  <a class="pbtn pbtn-ghost" href="index.html">← Zurück</a>
+  <button class="pbtn pbtn-dark" onclick="window.print()">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Als PDF drucken
+  </button>
+</div>
+
+<div class="sheet">
+  <div class="mast">
+    <div class="mast-row">
+      <div>
+        <h1>Verlaufseintrag <em>Vorlagen</em></h1>
+        <div class="mast-sub">Soziale Arbeit · KJPP-Tagesklinik · TARDOC EA.05</div>
+      </div>
+      <div class="mast-meta">
+        <strong>Tarif-Kompass 2026</strong>
+        Gültig ab 01.01.2026<br>tardoc.netlify.app
+      </div>
+    </div>
+    <div class="mast-note">
+      Ein guter Verlaufseintrag muss nicht lang sein — er muss <strong>tariflich nachvollziehbar</strong> sein. Felder mit <strong style="color:#f9a8b8">*</strong> sind für die Abrechenbarkeit entscheidend. Jede Leistung braucht einen passenden Verlaufseintrag am selben Tag.
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- ROW 1: Gespräch + LAP -->
+    <div class="cols">
+
+      <!-- GESPRÄCH -->
+      <div class="tmpl g">
+        <div class="tmpl-head">
+          <h3>👥 Einzel- / Familiengespräch</h3>
+          <span class="ziffer">0010 / 0030</span>
+        </div>
+        <div class="tmpl-hint">Anwesenheitsleistung — kurze Vor-/Nachbereitung ist inkludiert, nicht separat buchen.</div>
+        <div class="tmpl-body">
+          <div class="meta-row meta-4">
+            <div class="fld"><div class="fld-lbl">Datum <span class="fld-req">*</span></div><div class="line"></div></div>
+            <div class="fld"><div class="fld-lbl">Dauer Min <span class="fld-req">*</span></div><div class="line"></div></div>
+            <div class="fld"><div class="fld-lbl">Ziffer <span class="fld-req">*</span></div><div class="line"></div></div>
+            <div class="fld"><div class="fld-lbl">Mitarbeiterin</div><div class="line"></div></div>
+          </div>
+          <div class="fld-row fld"><div class="fld-lbl">Anwesende Personen <span class="fld-req">*</span></div><div class="line"></div></div>
+          <div class="fld-row fld"><div class="fld-lbl">Hauptthema / Anlass <span class="fld-req">*</span></div><div class="area"></div></div>
+          <div class="fld-row fld"><div class="fld-lbl">Fachliche Intervention</div><div class="area"></div></div>
+          <div class="fld fld-row"><div class="fld-lbl">Ergebnis / nächster Schritt <span class="fld-req">*</span></div><div class="line"></div></div>
+        </div>
+      </div>
+
+      <!-- LAP -->
+      <div class="tmpl l">
+        <div class="tmpl-head">
+          <h3>🌐 Netzwerkarbeit / LAP</h3>
+          <span class="ziffer">0110 / 0120 / 0130</span>
+        </div>
+        <div class="tmpl-hint">Leistung in Abwesenheit — aus dem 240-Min-Topf. Fachlicher Inhalt, nicht Terminorganisation.</div>
+        <div class="tmpl-body">
+          <div class="meta-row meta-4">
+            <div class="fld"><div class="fld-lbl">Datum <span class="fld-req">*</span></div><div class="line"></div></div>
+            <div class="fld"><div class="fld-lbl">Dauer Min <span class="fld-req">*</span></div><div class="line"></div></div>
+            <div class="fld"><div class="fld-lbl">Ziffer <span class="fld-req">*</span></div><div class="line"></div></div>
+            <div class="fld"><div class="fld-lbl">Mitarbeiterin</div><div class="line"></div></div>
+          </div>
+          <div class="fld-row fld"><div class="fld-lbl">Kontaktperson / Institution <span class="fld-req">*</span></div><div class="line"></div></div>
+          <div class="fld-row fld"><div class="fld-lbl">Weshalb fachlich notwendig? <span class="fld-req">*</span></div><div class="area"></div></div>
+          <div class="fld-row fld"><div class="fld-lbl">Kerninhalt des Austauschs</div><div class="area"></div></div>
+          <div class="fld fld-row"><div class="fld-lbl">Konkrete Folgevereinbarung <span class="fld-req">*</span></div><div class="line"></div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ROW 2: Hilfeplanung + Krise -->
+    <div class="cols">
+
+      <!-- HILFEPLANUNG -->
+      <div class="tmpl p">
+        <div class="tmpl-head">
+          <h3>📋 Hilfe-/Therapieplanung</h3>
+          <span class="ziffer">EA.05.0140</span>
+        </div>
+        <div class="tmpl-hint">Das Ergebnis muss schriftlich in der Akte vorhanden sein — sonst nicht abrechenbar!</div>
+        <div class="tmpl-body">
+          <div class="meta-row meta-3">
+            <div class="fld"><div class="fld-lbl">Datum <span class="fld-req">*</span></div><div class="line"></div></div>
+            <div class="fld"><div class="fld-lbl">Dauer Min <span class="fld-req">*</span></div><div class="line"></div></div>
+            <div class="fld"><div class="fld-lbl">Mitarbeiterin</div><div class="line"></div></div>
+          </div>
+          <div class="fld-row fld"><div class="fld-lbl">Art der Planung <span class="fld-req">*</span> <span class="fld-opt">(Hilfeplan / Netzplan / Krisenplan / Austritt / andere)</span></div><div class="line"></div></div>
+          <div class="fld-row fld"><div class="fld-lbl">Erstellt / Ausgewertet wurde <span class="fld-req">*</span></div><div class="area"></div></div>
+          <div class="fld-row fld"><div class="fld-lbl">Resultat <span class="fld-req">*</span></div><div class="line"></div></div>
+          <div class="fld fld-row"><div class="fld-lbl">Wo in der Akte ersichtlich? <span class="fld-req">*</span></div><div class="line"></div></div>
+        </div>
+        <div class="warn-strip"><span>⚠</span> Ohne schriftliches Ergebnis in der Akte: nicht abrechenbar!</div>
+      </div>
+
+      <!-- KRISE -->
+      <div class="tmpl k">
+        <div class="tmpl-head">
+          <h3>⚡ Krisenintervention</h3>
+          <span class="ziffer">EA.05.0050</span>
+        </div>
+        <div class="tmpl-hint">Nur bei unvorhersehbarem, überwältigendem Krisenzustand — ohne professionelle Hilfe nicht bewältigbar.</div>
+        <div class="tmpl-body">
+          <div class="meta-row meta-3">
+            <div class="fld"><div class="fld-lbl">Datum <span class="fld-req">*</span></div><div class="line"></div></div>
+            <div class="fld"><div class="fld-lbl">Dauer Min <span class="fld-req">*</span></div><div class="line"></div></div>
+            <div class="fld"><div class="fld-lbl">Mitarbeiterin</div><div class="line"></div></div>
+          </div>
+          <div class="fld-row fld"><div class="fld-lbl">Auslösendes Ereignis / Veränderung <span class="fld-req">*</span></div><div class="area"></div></div>
+          <div class="fld-row fld"><div class="fld-lbl">Bedrohungscharakter / Überforderung <span class="fld-req">*</span></div><div class="area"></div></div>
+          <div class="fld-row fld"><div class="fld-lbl">Weshalb sofortige professionelle Hilfe nötig? <span class="fld-req">*</span></div><div class="line"></div></div>
+          <div class="fld-row fld"><div class="fld-lbl">Konkrete Massnahmen <span class="fld-req">*</span></div><div class="area"></div></div>
+          <div class="fld fld-row"><div class="fld-lbl">Begründung Mehraufwand <span class="fld-req">*</span> <span class="fld-opt">(bei Überschreitung 4h-Regel)</span></div><div class="line"></div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- WEGZEIT -->
+    <div class="tmpl w">
+      <div class="tmpl-head">
+        <h3>🚗 Wegzeit</h3>
+        <span class="ziffer">EA.05.0060 · max. 60 Min / Sitzung · nicht Teil der 4h-Regel · Gespräch separat buchen</span>
+      </div>
+      <div class="tmpl-body" style="padding-top:8px">
+        <div class="wz-grid">
+          <div class="fld"><div class="fld-lbl">Datum</div><div class="line"></div></div>
+          <div class="fld"><div class="fld-lbl">Zielort</div><div class="line"></div></div>
+          <div class="fld"><div class="fld-lbl">Med. Indikation</div><div class="line"></div></div>
+          <div class="fld"><div class="fld-lbl">Wegzeit hin (Min)</div><div class="line"></div></div>
+          <div class="fld"><div class="fld-lbl">Wegzeit zurück (Min)</div><div class="line"></div></div>
+        </div>
+        <div style="height:5px"></div>
+        <div class="fld"><div class="fld-lbl">Bei vergeblichem Besuch: Begründung Abwesenheit (medizinisch indiziert) <span class="fld-req">*</span></div><div class="line"></div></div>
+      </div>
+    </div>
+
+    <!-- Fremdaktenstudium inline -->
+    <div class="tmpl" style="border-color:var(--teal-m)">
+      <div class="tmpl-head" style="background:var(--teal)">
+        <h3>📄 Fremdaktenstudium</h3>
+        <span class="ziffer">EA.05.0100 · LAP-Topf</span>
+      </div>
+      <div class="tmpl-hint" style="border-left-color:var(--teal-m)">Nur externe Akten (Schulbericht, IV, frühere Klinik, SPD, Behörde). Eigene Verlaufsnotizen nicht abrechenbar.</div>
+      <div class="tmpl-body">
+        <div class="meta-row" style="grid-template-columns:55mm 35mm 35mm 1fr">
+          <div class="fld"><div class="fld-lbl">Datum <span class="fld-req">*</span></div><div class="line"></div></div>
+          <div class="fld"><div class="fld-lbl">Dauer Min <span class="fld-req">*</span></div><div class="line"></div></div>
+          <div class="fld"><div class="fld-lbl">Herkunft der Akte <span class="fld-req">*</span></div><div class="line"></div></div>
+          <div class="fld"><div class="fld-lbl">Mitarbeiterin</div><div class="line"></div></div>
+        </div>
+        <div class="fld"><div class="fld-lbl">Inhalt / Fachliche Relevanz für den Fall <span class="fld-req">*</span></div><div class="line"></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ft">
+    <span>Tarif-Kompass 2026 · KJPP-Tagesklinik · Nichtärztliche Mitarbeitende</span>
+    <span>TARDOC Kapitel EA.05 · tardoc.netlify.app</span>
+  </div>
+</div>
+</body>
+</html>
