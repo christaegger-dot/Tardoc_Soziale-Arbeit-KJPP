@@ -745,7 +745,8 @@
     <a href="#lap-topf" class="nav-link">5 · LAP-Topf</a>
     <a href="#netzwerk" class="nav-link">6 · Netzwerkarbeit</a>
     <a href="#szenarien" class="nav-link">7 · Szenarien</a>
-    <a href="#kurzfassung" class="nav-link">8 · Kurzfassung</a>
+    <a href="#verlauf" class="nav-link">8 · Verlaufseintrag</a>
+    <a href="#kurzfassung" class="nav-link">9 · Kurzfassung</a>
   </div>
   <!-- Mobile hamburger button -->
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Navigation öffnen" aria-expanded="false" aria-controls="nav-mobile">
@@ -761,7 +762,8 @@
     <a href="#lap-topf" class="nav-mobile-link" role="menuitem">5 · LAP-Topf</a>
     <a href="#netzwerk" class="nav-mobile-link" role="menuitem">6 · Netzwerkarbeit</a>
     <a href="#szenarien" class="nav-mobile-link" role="menuitem">7 · Szenarien</a>
-    <a href="#kurzfassung" class="nav-mobile-link" role="menuitem">8 · Kurzfassung</a>
+    <a href="#verlauf" class="nav-mobile-link" role="menuitem">8 · Verlaufseintrag</a>
+    <a href="#kurzfassung" class="nav-mobile-link" role="menuitem">9 · Kurzfassung</a>
   </div>
 </nav>
 
@@ -968,6 +970,7 @@
             <button class="idt-choice" onclick="showStep('result-angeh')">Elterntelefonat</button>
             <button class="idt-choice" onclick="showStep('result-plan')">Hilfeplanung</button>
             <button class="idt-choice" onclick="showStep('result-wegzeit')">Wegzeit</button>
+            <button class="idt-choice" onclick="showStep('result-email')">E-Mail / zeitversetzt</button>
           </div>
         </div>
 
@@ -1072,6 +1075,22 @@
             <strong>Schriftliche Therapie-/Hilfeplanung</strong>
             <p>Hilfeplan, Netzplan, Krisenplan, Austrittsplanung.</p>
             <ul><li>Das Ergebnis muss schriftlich in der Akte vorhanden sein!</li></ul>
+          </div>
+          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+        </div>
+
+        <div class="idt-step" id="result-email">
+          <button class="idt-back" onclick="showStep('step-3b')">← Zurück</button>
+          <div class="idt-result-box" style="background:#fffbeb;border-color:#fcd34d;border-width:2px">
+            <small style="color:#B45309">EA.05.0080 · LAP-Topf</small>
+            <strong style="color:var(--navy)">Telemedizin zeitversetzt</strong>
+            <p>E-Mail oder andere zeitversetzte digitale Kommunikation mit dem Patienten.</p>
+            <ul style="list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:4px">
+              <li style="font-size:13px;color:#B45309;display:flex;gap:6px"><span>→</span> Max. <strong>1× pro Tag</strong> abrechenbar</li>
+              <li style="font-size:13px;color:#B45309;display:flex;gap:6px"><span>→</span> Max. <strong>4× pro 30 Tage</strong></li>
+              <li style="font-size:13px;color:#92400e;display:flex;gap:6px"><span>!</span> Stark limitiert — bei Angehörigenkontakten besser EA.05.0070 (synchron) verwenden</li>
+              <li style="font-size:13px;color:#92400e;display:flex;gap:6px"><span>!</span> Entspricht dem <strong>Email-Reglement der Klinik</strong> beachten</li>
+            </ul>
           </div>
           <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
         </div>
