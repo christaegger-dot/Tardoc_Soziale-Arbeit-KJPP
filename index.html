@@ -33,7 +33,7 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { overflow-x: hidden; }
+  html { overflow-x: hidden; scroll-behavior: smooth; }
 
   body {
     font-family: 'DM Sans', sans-serif;
@@ -92,9 +92,23 @@
   .header-sub {
     font-size: 16px;
     color: rgba(255,255,255,0.7);
-    margin-bottom: 28px;
+    margin-bottom: 12px;
     font-weight: 300;
   }
+  /* ── ROLLE DER WEB-VERSION (Punkt 5) ── */
+  .header-role-hint {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 8px;
+    flex-wrap: wrap;
+  }
+  .header-role-hint a {
+    color: var(--teal-light);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .header-role-hint a:hover { color: white; }
   .header-meta {
     display: flex; gap: 24px; flex-wrap: wrap;
   }
@@ -107,20 +121,21 @@
   /* ── LAYOUT ── */
   .main { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
 
-  /* ── NAV ── */
+  /* ── NAV BAR (Desktop: horizontal scroll, Mobile: Hamburger) ── */
   .nav-bar {
     background: white;
     border-bottom: 1px solid var(--border);
     position: sticky; top: 0; z-index: 100;
     box-shadow: 0 1px 8px rgba(0,0,0,0.06);
-    overflow: hidden;
   }
+  /* Desktop nav */
   .nav-inner {
     max-width: 900px; margin: 0 auto;
     padding: 0 24px;
     display: flex; gap: 2px; overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    align-items: center;
   }
   .nav-inner::-webkit-scrollbar { display: none; }
   .nav-link {
@@ -131,10 +146,42 @@
     border-bottom: 2px solid transparent;
     transition: all .2s;
   }
-  .nav-link:hover { color: var(--teal); border-bottom-color: var(--teal); }
+  .nav-link:hover, .nav-link.active { color: var(--teal); border-bottom-color: var(--teal); }
+  /* Mobile hamburger toggle — hidden on desktop */
+  .nav-hamburger {
+    display: none;
+    margin-left: auto;
+    padding: 14px 16px;
+    background: none; border: none; cursor: pointer;
+    color: var(--slate); font-size: 20px; line-height: 1;
+    flex-shrink: 0;
+  }
+  /* Mobile dropdown menu */
+  .nav-mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: white;
+    border-top: 1px solid var(--border);
+    padding: 8px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  .nav-mobile-menu.open { display: flex; }
+  .nav-mobile-menu a {
+    padding: 12px 24px;
+    font-size: 14px; font-weight: 500;
+    color: var(--slate);
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all .15s;
+  }
+  .nav-mobile-menu a:hover, .nav-mobile-menu a.active {
+    color: var(--teal);
+    border-left-color: var(--teal);
+    background: #f0fdfa;
+  }
 
   /* ── SECTION ── */
-  .section { margin-bottom: 52px; }
+  .section { margin-bottom: 52px; scroll-margin-top: 60px; }
   .section-title {
     font-family: 'DM Serif Display', serif;
     font-size: 26px;
@@ -178,14 +225,16 @@
   }
   .rule-card.amber { border-left-color: var(--amber); }
   .rule-card.rose { border-left-color: var(--rose); }
+  /* Icon als farbige Badge statt Emoji (Punkt 4) */
   .rule-icon {
     width: 36px; height: 36px; border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; font-size: 18px;
+    flex-shrink: 0;
     background: #f0fdfa;
   }
   .rule-card.amber .rule-icon { background: #fffbeb; }
   .rule-card.rose .rule-icon { background: #fef3c7; }
+  .rule-icon svg { width: 18px; height: 18px; }
   .rule-card h3 {
     font-weight: 600; font-size: 14px;
     margin-bottom: 4px; color: var(--navy);
@@ -219,17 +268,14 @@
   }
   .budget-total-num { color: var(--amber-light); font-weight: 700; font-size: 22px; font-family: 'DM Serif Display', serif; }
 
-  /* ── DECISION TREE ── */
+  /* ── DECISION TREE (static) ── */
   .decision-tree {
     background: white; border: 1px solid var(--border);
     border-radius: 14px; padding: 32px;
   }
   .dt-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--navy); margin-bottom: 6px; }
   .dt-sub { font-size: 13px; color: var(--text-soft); margin-bottom: 28px; }
-
-  .dt-node {
-    position: relative;
-  }
+  .dt-node { position: relative; }
   .dt-question {
     background: var(--navy); color: white;
     border-radius: 10px; padding: 14px 20px;
@@ -253,12 +299,8 @@
     left: 0; top: 0; bottom: 50%;
     width: 1px; background: var(--border);
   }
-  .dt-branch {
-    flex: 1; position: relative;
-  }
-  .dt-connector {
-    display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
-  }
+  .dt-branch { flex: 1; position: relative; }
+  .dt-connector { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
   .dt-connector-line { flex: 1; height: 1px; background: var(--border); }
   .dt-connector-label {
     font-size: 11px; font-weight: 700;
@@ -312,10 +354,7 @@
 
   /* ── FLOWCHART ── */
   .flow-chart { display: flex; flex-direction: column; gap: 0; align-items: center; }
-  .flow-step {
-    display: flex; align-items: center; gap: 0; width: 100%;
-    position: relative;
-  }
+  .flow-step { display: flex; align-items: center; gap: 0; width: 100%; position: relative; }
   .flow-box {
     flex: 1; border-radius: 10px; padding: 14px 18px;
     text-align: center; font-size: 13.5px; font-weight: 500;
@@ -376,6 +415,131 @@
     border-radius: 8px; font-size: 13px; color: #B45309;
     display: flex; gap: 10px; align-items: flex-start;
   }
+
+  /* ── INTERACTIVE DECISION TREE (Punkt 3) ── */
+  .idt { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 28px; }
+  .idt-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--navy); margin-bottom: 4px; }
+  .idt-sub { font-size: 13px; color: var(--text-soft); margin-bottom: 20px; }
+
+  /* Toggle: Interaktiv / Alles anzeigen */
+  .idt-toggle {
+    display: flex; gap: 8px; margin-bottom: 24px;
+  }
+  .idt-toggle-btn {
+    padding: 6px 16px; border-radius: 20px;
+    font-size: 12.5px; font-weight: 600; cursor: pointer;
+    border: 1.5px solid var(--border);
+    background: white; color: var(--slate);
+    transition: all .2s;
+  }
+  .idt-toggle-btn.active {
+    background: var(--navy); color: white; border-color: var(--navy);
+  }
+
+  /* Interaktiver Modus */
+  .idt-interactive { display: flex; flex-direction: column; gap: 0; }
+  .idt-step {
+    display: none; flex-direction: column; gap: 16px;
+    animation: fadeIn .25s ease;
+  }
+  .idt-step.visible { display: flex; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .idt-q-box {
+    background: var(--navy); color: white;
+    border-radius: 12px; padding: 18px 24px;
+    font-size: 15px; font-weight: 500;
+  }
+  .idt-q-box small {
+    display: block; font-size: 11px; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--teal-light); margin-bottom: 5px;
+  }
+  .idt-q-box .q-sub { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+  .idt-choices { display: flex; gap: 10px; flex-wrap: wrap; }
+  .idt-choice {
+    flex: 1; min-width: 140px;
+    padding: 12px 18px; border-radius: 10px;
+    font-size: 13.5px; font-weight: 600; cursor: pointer;
+    border: 2px solid var(--border);
+    background: white; color: var(--navy);
+    text-align: center; transition: all .15s;
+  }
+  .idt-choice:hover { border-color: var(--teal); color: var(--teal); background: #f0fdfa; }
+  .idt-choice.yes-btn:hover { border-color: #16a34a; color: #15803d; background: #f0fdf4; }
+  .idt-choice.no-btn:hover { border-color: var(--amber); color: var(--amber); background: #fffbeb; }
+  .idt-result-box {
+    border-radius: 12px; padding: 18px 22px;
+    border: 2px solid;
+  }
+  .idt-result-box.intern { background: #fef3c7; border-color: #fca5a5; }
+  .idt-result-box.anw { background: #f0fdfa; border-color: var(--teal); }
+  .idt-result-box.lap { background: #dbeafe; border-color: #93c5fd; }
+  .idt-result-box small {
+    display: block; font-size: 10px; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase; margin-bottom: 6px;
+  }
+  .idt-result-box.intern small { color: #7c2d12; }
+  .idt-result-box.anw small { color: var(--teal); }
+  .idt-result-box.lap small { color: #1E656D; }
+  .idt-result-box strong { font-size: 14px; color: var(--navy); display: block; margin-bottom: 4px; }
+  .idt-result-box p { font-size: 13px; color: var(--slate); }
+  .idt-result-box ul { list-style: none; display: flex; flex-direction: column; gap: 4px; margin-top: 8px; }
+  .idt-result-box ul li { font-size: 13px; color: var(--slate); display: flex; gap: 8px; }
+  .idt-result-box ul li::before { content: '→'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+  .idt-result-box.lap ul li::before { color: #1E656D; }
+  .idt-back {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12.5px; color: var(--slate); cursor: pointer;
+    background: none; border: none; padding: 0;
+    text-decoration: underline; text-underline-offset: 2px;
+  }
+  .idt-back:hover { color: var(--teal); }
+  .idt-restart {
+    margin-top: 16px;
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12.5px; font-weight: 600; color: var(--teal); cursor: pointer;
+    background: #f0fdfa; border: 1.5px solid var(--teal);
+    padding: 8px 16px; border-radius: 20px;
+    transition: all .15s;
+  }
+  .idt-restart:hover { background: var(--teal); color: white; }
+
+  /* Vollansicht (statisch) */
+  .idt-fullview { display: none; }
+  .idt-fullview.visible { display: block; }
+  .idt-node { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .idt-q {
+    background: var(--navy); color: white;
+    border-radius: 12px; padding: 16px 24px;
+    font-size: 14.5px; font-weight: 500; text-align: center;
+    width: 100%; max-width: 480px;
+  }
+  .idt-q small { display: block; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 4px; }
+  .idt-down { height: 24px; display: flex; align-items: center; justify-content: center; color: var(--slate-light); font-size: 20px; }
+  .idt-fork { display: flex; gap: 16px; width: 100%; }
+  .idt-branch { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .idt-branch-label {
+    font-size: 11px; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 8px;
+  }
+  .idt-branch-label.y { background: #dcfce7; color: #14532d; }
+  .idt-branch-label.n { background: #fee2e2; color: #7c2d12; }
+  .idt-res {
+    border-radius: 10px; padding: 14px 16px;
+    text-align: center; width: 100%; font-size: 13px;
+  }
+  .idt-res small { display: block; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px; }
+  .idt-res.teal { background: #f0fdfa; border: 1.5px solid var(--teal); color: var(--navy); }
+  .idt-res.teal small { color: #1E656D; }
+  .idt-res.blue { background: #f0fdfa; border: 1.5px solid #5eadb3; color: var(--navy); }
+  .idt-res.blue small { color: #1E656D; }
+  .idt-res.amber { background: #fffbeb; border: 1.5px solid var(--amber); color: var(--navy); }
+  .idt-res.amber small { color: #B45309; }
+  .idt-res.rose { background: #fef3c7; border: 1.5px solid var(--rose); color: var(--navy); }
+  .idt-res.rose small { color: #7c2d12; }
+  .idt-line { width: 1px; height: 20px; background: var(--border); }
+  .idt-sub-fork { display: flex; gap: 16px; width: 100%; }
+  .idt-sub-branch { flex: 1; display: flex; flex-direction: column; align-items: center; }
 
   /* ── SCENARIO CARDS ── */
   .scenario-grid { display: grid; gap: 14px; }
@@ -438,45 +602,7 @@
   /* ── DIVIDER ── */
   .divider { height: 1px; background: var(--border); margin: 40px 0; }
 
-  /* ── INTERACTIVE DECISION TREE ── */
-  .idt { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 28px; }
-  .idt-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--navy); margin-bottom: 4px; }
-  .idt-sub { font-size: 13px; color: var(--text-soft); margin-bottom: 24px; }
-  .idt-node { display: flex; flex-direction: column; align-items: center; gap: 0; }
-  .idt-q {
-    background: var(--navy); color: white;
-    border-radius: 12px; padding: 16px 24px;
-    font-size: 14.5px; font-weight: 500; text-align: center;
-    width: 100%; max-width: 480px;
-  }
-  .idt-q small { display: block; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 4px; }
-  .idt-down { height: 24px; display: flex; align-items: center; justify-content: center; color: var(--slate-light); font-size: 20px; }
-  .idt-fork { display: flex; gap: 16px; width: 100%; }
-  .idt-branch { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0; }
-  .idt-branch-label {
-    font-size: 11px; font-weight: 700; letter-spacing: .1em;
-    text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 8px;
-  }
-  .idt-branch-label.y { background: #dcfce7; color: #14532d; }
-  .idt-branch-label.n { background: #fee2e2; color: #7c2d12; }
-  .idt-res {
-    border-radius: 10px; padding: 14px 16px;
-    text-align: center; width: 100%; font-size: 13px;
-  }
-  .idt-res small { display: block; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px; }
-  .idt-res.teal { background: #f0fdfa; border: 1.5px solid var(--teal); color: var(--navy); }
-  .idt-res.teal small { color: #1E656D; }
-  .idt-res.blue { background: #f0fdfa; border: 1.5px solid #5eadb3; color: var(--navy); }
-  .idt-res.blue small { color: #1E656D; }
-  .idt-res.amber { background: #fffbeb; border: 1.5px solid var(--amber); color: var(--navy); }
-  .idt-res.amber small { color: #B45309; }
-  .idt-res.rose { background: #fef3c7; border: 1.5px solid var(--rose); color: var(--navy); }
-  .idt-res.rose small { color: #7c2d12; }
-  .idt-line { width: 1px; height: 20px; background: var(--border); }
-  .idt-sub-fork { display: flex; gap: 16px; width: 100%; }
-  .idt-sub-branch { flex: 1; display: flex; flex-direction: column; align-items: center; }
-
-  /* Highlight note */
+  /* ── NOTE / WARN BOX ── */
   .note {
     background: #fffbeb; border: 1px solid #fcd34d;
     border-radius: 8px; padding: 12px 16px;
@@ -485,6 +611,19 @@
     margin-top: 16px;
   }
   .note-icon { flex-shrink: 0; font-size: 16px; margin-top: 1px; }
+
+  /* PE010 Kompakt-Warnung (Punkt 2) */
+  .pe010-alert {
+    background: #fff7ed;
+    border: 1.5px solid #fb923c;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 13px; color: #7c2d12;
+    display: flex; gap: 10px; align-items: flex-start;
+    margin-top: 16px;
+  }
+  .pe010-alert-icon { flex-shrink: 0; font-size: 16px; }
+  .pe010-alert strong { color: #92400e; }
 
   /* ── DOWNLOAD BUTTONS ── */
   .dl-bar {
@@ -525,6 +664,7 @@
   }
 
   @media (max-width: 600px) {
+    .header { padding: 32px 20px 28px; }
     .header h1 { font-size: 28px; }
     .card-grid-2, .card-grid-3, .do-dont { grid-template-columns: 1fr; }
     .pos-item { grid-template-columns: 1fr; }
@@ -532,6 +672,14 @@
     .scenario-num { writing-mode: horizontal-tb; padding: 12px; font-size: 14px; height: auto; }
     .idt-fork, .idt-sub-fork { flex-direction: column; }
     .budget-item { flex-direction: column; gap: 4px; }
+    /* Mobile: Hamburger statt horizontal nav */
+    .nav-inner { display: none; }
+    .nav-hamburger { display: flex; align-items: center; justify-content: center; }
+    .nav-bar { overflow: visible; }
+    .dl-bar { bottom: 12px; right: 12px; gap: 6px; }
+    .dl-btn { font-size: 11.5px; padding: 10px 14px; }
+    .idt-choices { flex-direction: column; }
+    .idt-choice { min-width: unset; }
   }
 </style>
 </head>
@@ -563,6 +711,12 @@
     <span class="header-badge">TARDOC · EA.05 · ab 01.01.2026</span>
     <h1>Tarif-Kompass <span>2026</span></h1>
     <p class="header-sub">Praxisleitfaden für Soziale Arbeit in der Tagesklinik KJPP · Nichtärztliche Mitarbeitende</p>
+    <!-- PUNKT 5: Rolle der Web-Version schärfen -->
+    <p class="header-role-hint">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      Diese Seite erklärt die Hintergründe und Logik — zum schnellen Nachschlagen im Moment die
+      <a href="files/spickzettel-print.html" target="_blank">vier Kurzblätter</a> oben rechts verwenden.
+    </p>
     <div class="header-meta">
       <div class="header-meta-item">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
@@ -580,17 +734,34 @@
   </div>
 </header>
 
-<!-- NAV -->
-<nav class="nav-bar">
-  <div class="nav-inner">
-    <a href="#grundregeln" class="nav-link">Grundregeln</a>
-    <a href="#limits" class="nav-link">Limits</a>
-    <a href="#entscheidung" class="nav-link">Entscheidungsbaum</a>
-    <a href="#positionen" class="nav-link">Positionen</a>
-    <a href="#lap-topf" class="nav-link">LAP-Topf</a>
-    <a href="#netzwerk" class="nav-link">Netzwerkarbeit</a>
-    <a href="#szenarien" class="nav-link">Alltagsszenarien</a>
-    <a href="#kurzfassung" class="nav-link">Kurzfassung</a>
+<!-- NAV (Desktop: horizontal scroll + active indicator; Mobile: Hamburger) -->
+<nav class="nav-bar" id="main-nav" aria-label="Seitennavigation">
+  <!-- Desktop links -->
+  <div class="nav-inner" id="nav-desktop">
+    <a href="#grundregeln" class="nav-link">1 · Grundregeln</a>
+    <a href="#limits" class="nav-link">2 · Limits</a>
+    <a href="#entscheidung" class="nav-link">3 · Entscheidungsbaum</a>
+    <a href="#positionen" class="nav-link">4 · Positionen</a>
+    <a href="#lap-topf" class="nav-link">5 · LAP-Topf</a>
+    <a href="#netzwerk" class="nav-link">6 · Netzwerkarbeit</a>
+    <a href="#szenarien" class="nav-link">7 · Szenarien</a>
+    <a href="#kurzfassung" class="nav-link">8 · Kurzfassung</a>
+  </div>
+  <!-- Mobile hamburger button -->
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Navigation öffnen" aria-expanded="false" aria-controls="nav-mobile">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" id="hamburger-icon"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" id="close-icon" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <!-- Mobile dropdown -->
+  <div class="nav-mobile-menu" id="nav-mobile" role="menu">
+    <a href="#grundregeln" class="nav-mobile-link" role="menuitem">1 · Grundregeln</a>
+    <a href="#limits" class="nav-mobile-link" role="menuitem">2 · Limits</a>
+    <a href="#entscheidung" class="nav-mobile-link" role="menuitem">3 · Entscheidungsbaum</a>
+    <a href="#positionen" class="nav-mobile-link" role="menuitem">4 · Positionen</a>
+    <a href="#lap-topf" class="nav-mobile-link" role="menuitem">5 · LAP-Topf</a>
+    <a href="#netzwerk" class="nav-mobile-link" role="menuitem">6 · Netzwerkarbeit</a>
+    <a href="#szenarien" class="nav-mobile-link" role="menuitem">7 · Szenarien</a>
+    <a href="#kurzfassung" class="nav-mobile-link" role="menuitem">8 · Kurzfassung</a>
   </div>
 </nav>
 
@@ -605,40 +776,65 @@
     <p class="section-lead">Was immer gilt — unabhängig von der Situation.</p>
 
     <div class="rule-cards">
+      <!-- Punkt 4: Emojis durch sinntragende SVG-Icons ersetzt -->
       <div class="rule-card">
-        <div class="rule-icon">📋</div>
+        <div class="rule-icon" aria-hidden="true">
+          <!-- Person / Fachperson -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1E656D" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
         <div>
           <h3>Jede Fachperson rechnet eigene Leistungen ab</h3>
           <p>Leistungen werden tagesgenau erfasst. Jede Leistung braucht einen passenden Verlaufseintrag. Nicht delegieren, nicht zusammenfassen.</p>
         </div>
       </div>
       <div class="rule-card">
-        <div class="rule-icon">✍️</div>
+        <div class="rule-icon" aria-hidden="true">
+          <!-- Stift / Dokumentation -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1E656D" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
         <div>
           <h3>Nicht dokumentiert = tariflich schlecht abgesichert</h3>
           <p>Der Verlaufseintrag ist Ihr Nachweis gegenüber dem Kostenträger. Besonders bei Krisen, langer Netzwerkarbeit und allen Grenzfällen.</p>
         </div>
       </div>
       <div class="rule-card amber">
-        <div class="rule-icon">⚖️</div>
+        <div class="rule-icon" aria-hidden="true">
+          <!-- Zwei Kreise / Trennung Anwesenheit/Abwesenheit -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2"><circle cx="8" cy="12" r="5"/><circle cx="16" cy="12" r="5"/></svg>
+        </div>
         <div>
           <h3>Anwesenheit ≠ Abwesenheit — strikt trennen</h3>
           <p>Gespräch mit Patient/Familie (Anwesenheitsleistung) ist tariflich ein anderer Mechanismus als Telefonat mit Beistand ohne den Patienten (LAP-Topf).</p>
         </div>
       </div>
       <div class="rule-card amber">
-        <div class="rule-icon">🚗</div>
+        <div class="rule-icon" aria-hidden="true">
+          <!-- Navigation / Wegzeit -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        </div>
         <div>
           <h3>Wegzeit ist ein eigener Bereich</h3>
           <p>Wegzeit ist abrechenbar, aber kein Teil des Gesprächs. Max. 60 Minuten pro Sitzung. Zählt nicht zur 4-Stunden-Regel.</p>
         </div>
       </div>
       <div class="rule-card rose">
-        <div class="rule-icon">🚫</div>
+        <div class="rule-icon" aria-hidden="true">
+          <!-- Schloss / Intern bleibt intern -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
         <div>
           <h3>Interne Arbeit bleibt intern</h3>
           <p>Supervision, Intervision, interne Rapporte, Terminvereinbarungen und Leistungserfassung am PC sind keine verrechenbaren Patientenleistungen.</p>
         </div>
+      </div>
+    </div>
+
+    <!-- PUNKT 2: PE010 Kompakt-Warnung in Abschnitt 1 -->
+    <div class="pe010-alert" role="alert">
+      <span class="pe010-alert-icon">⚠</span>
+      <div>
+        <strong>PE010 gilt für Soziale Arbeit nicht</strong> — Die direkte kurze Vor-/Nachbereitung ist in EA.05.0010, 0030 und 0050 bereits inkludiert. Keine zusätzliche 15-Min-Ziffer anwenden.
+        <span style="color:#92400e;font-size:12px;display:block;margin-top:3px">→ Ausführliche Erklärung weiter unten in Abschnitt 8</span>
       </div>
     </div>
   </section>
@@ -692,7 +888,7 @@
     </div>
   </section>
 
-  <!-- ─── ENTSCHEIDUNGSBAUM ─── -->
+  <!-- ─── ENTSCHEIDUNGSBAUM (PUNKT 3: Interaktiv) ─── -->
   <section class="section" id="entscheidung">
     <h2 class="section-title">
       <span class="num">3</span>
@@ -702,120 +898,271 @@
 
     <div class="idt">
       <div class="idt-title">Welche Leistungsziffer passt?</div>
-      <div class="idt-sub">Jede Situation durch diese Fragen führen — von oben nach unten.</div>
+      <div class="idt-sub">Schritt für Schritt durch die Fragen — oder Vollansicht wählen.</div>
 
-      <div class="idt-node">
-        <!-- Q1 -->
-        <div class="idt-q">
-          <small>Frage 1</small>
-          Ist es eine <strong>interne Tätigkeit</strong>?<br>
-          <span style="font-size:12px;color:rgba(255,255,255,0.6)">(Rapport, Supervision, Intervision, Terminvereinbarung, Leistungserfassung)</span>
-        </div>
-        <div class="idt-down">↓</div>
-        <div class="idt-fork">
-          <div class="idt-branch">
-            <div class="idt-branch-label y">JA</div>
-            <div class="idt-res rose">
-              <small>Resultat</small>
-              <strong>Nicht verrechenbar</strong>
-              Intern verbuchen — kein Patientenbudget
-            </div>
-          </div>
-          <div class="idt-branch">
-            <div class="idt-branch-label n">NEIN</div>
-            <!-- Q2 -->
-            <div class="idt-q">
-              <small>Frage 2</small>
-              Ist der Patient / die Familie <strong>anwesend</strong>?
-            </div>
-            <div class="idt-line"></div>
-            <div class="idt-sub-fork">
-              <div class="idt-sub-branch">
-                <div class="idt-branch-label y">JA</div>
-                <!-- Q3 Yes branch -->
-                <div class="idt-q" style="font-size:13px; max-width:none">
-                  <small>Frage 3</small>
-                  Was für ein Setting?
-                </div>
-                <div class="idt-line"></div>
-                <div style="display:grid;gap:6px;width:100%">
-                  <div class="idt-res teal">
-                    <small>EA.05.0010</small>
-                    <strong>Einzelsetting</strong>
-                    Patient allein anwesend
-                  </div>
-                  <div class="idt-res teal">
-                    <small>EA.05.0030</small>
-                    <strong>Familiensetting</strong>
-                    Patient + Eltern / Bezugspersonen
-                  </div>
-                  <div class="idt-res teal">
-                    <small>EA.05.0050</small>
-                    <strong>Krisenintervention</strong>
-                    Nur wenn Krise (unvorhersehbar, überwältigend)
-                  </div>
-                  <div class="idt-res blue">
-                    <small>EA.05.0070</small>
-                    <strong>Telemedizin (synchron)</strong>
-                    Video/Telefon als echte Behandlung
-                  </div>
-                </div>
-                <div class="note" style="margin-top:10px;">
-                  <span class="note-icon">⚠️</span>
-                  Kurze direkte Vor-/Nachbereitung ist <strong>inkludiert</strong> — nicht zusätzlich als LAP buchen!
-                </div>
-              </div>
-              <div class="idt-sub-branch">
-                <div class="idt-branch-label n">NEIN</div>
-                <!-- Q3 No branch -->
-                <div class="idt-q" style="font-size:13px; max-width:none">
-                  <small>Frage 3</small>
-                  Was für eine Abwesenheitsleistung?
-                </div>
-                <div class="idt-line"></div>
-                <div style="display:grid;gap:6px;width:100%">
-                  <div class="idt-res blue">
-                    <small>EA.05.0100 · LAP-Topf</small>
-                    <strong>Fremdaktenstudium</strong>
-                    Externe Berichte, IV-Akten, SPD-Bericht
-                  </div>
-                  <div class="idt-res blue">
-                    <small>EA.05.0110 · LAP-Topf</small>
-                    <strong>Auskünfte an/von Dritten</strong>
-                    Schule, Beistand, Sozialdienst (fachlich, nicht org.)
-                  </div>
-                  <div class="idt-res blue">
-                    <small>EA.05.0120 · LAP-Topf</small>
-                    <strong>Auskünfte Angehörige</strong>
-                    Inhaltliches Elterntelefonat ohne Patient
-                  </div>
-                  <div class="idt-res blue">
-                    <small>EA.05.0130 · LAP-Topf</small>
-                    <strong>Besprechung externe Behandler</strong>
-                    Fachlicher Austausch mit ext. Betreuern
-                  </div>
-                  <div class="idt-res blue">
-                    <small>EA.05.0140 · LAP-Topf</small>
-                    <strong>Schriftliche Hilfe-/Therapieplanung</strong>
-                    Nur wenn Ergebnis schriftlich vorhanden!
-                  </div>
-                  <div class="idt-res amber">
-                    <small>EA.05.0080</small>
-                    <strong>Telemedizin zeitversetzt</strong>
-                    Max. 1×/Tag, max. 4×/30 Tage (E-Mail etc.)
-                  </div>
-                  <div class="idt-res amber">
-                    <small>EA.05.0060</small>
-                    <strong>Wegzeit</strong>
-                    Max. 60 Min pro Sitzung · nicht im LAP-Topf
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- Toggle Interaktiv / Vollansicht -->
+      <div class="idt-toggle" role="group" aria-label="Anzeigemodus">
+        <button class="idt-toggle-btn active" id="btn-interactive" onclick="setMode('interactive')" aria-pressed="true">
+          ▶ Schritt für Schritt
+        </button>
+        <button class="idt-toggle-btn" id="btn-full" onclick="setMode('full')" aria-pressed="false">
+          ⊞ Alles anzeigen
+        </button>
       </div>
-    </div>
+
+      <!-- INTERAKTIVER MODUS -->
+      <div class="idt-interactive" id="idt-interactive">
+
+        <!-- Schritt 1 -->
+        <div class="idt-step visible" id="step-1">
+          <div class="idt-q-box">
+            <small>Frage 1 von 3</small>
+            Ist es eine <strong>interne Tätigkeit</strong>?
+            <div class="q-sub">Rapport · Supervision · Intervision · Terminvereinbarung · Leistungserfassung</div>
+          </div>
+          <div class="idt-choices">
+            <button class="idt-choice yes-btn" onclick="showStep('result-intern')">Ja — intern</button>
+            <button class="idt-choice no-btn" onclick="showStep('step-2')">Nein — patientenbezogen</button>
+          </div>
+        </div>
+
+        <!-- Schritt 2 -->
+        <div class="idt-step" id="step-2">
+          <button class="idt-back" onclick="showStep('step-1')">← Zurück</button>
+          <div class="idt-q-box">
+            <small>Frage 2 von 3</small>
+            Ist der Patient / die Familie <strong>anwesend</strong>?
+            <div class="q-sub">Synchron live / Telefon / Video = anwesend</div>
+          </div>
+          <div class="idt-choices">
+            <button class="idt-choice yes-btn" onclick="showStep('step-3a')">Ja — anwesend</button>
+            <button class="idt-choice no-btn" onclick="showStep('step-3b')">Nein — nicht anwesend</button>
+          </div>
+        </div>
+
+        <!-- Schritt 3a: Anwesend -->
+        <div class="idt-step" id="step-3a">
+          <button class="idt-back" onclick="showStep('step-2')">← Zurück</button>
+          <div class="idt-q-box">
+            <small>Frage 3 von 3</small>
+            Was für ein <strong>Setting</strong>?
+          </div>
+          <div class="idt-choices" style="flex-wrap:wrap">
+            <button class="idt-choice" onclick="showStep('result-einzel')">Einzelsetting</button>
+            <button class="idt-choice" onclick="showStep('result-familie')">Familiensetting</button>
+            <button class="idt-choice" onclick="showStep('result-krise')">Krisensituation</button>
+            <button class="idt-choice" onclick="showStep('result-tele')">Video / Telefon</button>
+          </div>
+        </div>
+
+        <!-- Schritt 3b: Nicht anwesend -->
+        <div class="idt-step" id="step-3b">
+          <button class="idt-back" onclick="showStep('step-2')">← Zurück</button>
+          <div class="idt-q-box">
+            <small>Frage 3 von 3</small>
+            Was für eine <strong>Abwesenheitsleistung</strong>?
+          </div>
+          <div class="idt-choices" style="flex-wrap:wrap">
+            <button class="idt-choice" onclick="showStep('result-akten')">Akten lesen</button>
+            <button class="idt-choice" onclick="showStep('result-dritte')">Kontakt Dritte</button>
+            <button class="idt-choice" onclick="showStep('result-angeh')">Elterntelefonat</button>
+            <button class="idt-choice" onclick="showStep('result-plan')">Hilfeplanung</button>
+            <button class="idt-choice" onclick="showStep('result-wegzeit')">Wegzeit</button>
+          </div>
+        </div>
+
+        <!-- RESULTATE -->
+        <div class="idt-step" id="result-intern">
+          <button class="idt-back" onclick="showStep('step-1')">← Zurück</button>
+          <div class="idt-result-box intern">
+            <small>Resultat</small>
+            <strong>Nicht verrechenbar — intern verbuchen</strong>
+            <p>Rapport, Supervision, Intervision, Terminvereinbarungen und Leistungserfassung am PC sind keine abrechenbaren Patientenleistungen.</p>
+          </div>
+          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+        </div>
+
+        <div class="idt-step" id="result-einzel">
+          <button class="idt-back" onclick="showStep('step-3a')">← Zurück</button>
+          <div class="idt-result-box anw">
+            <small>EA.05.0010 · Anwesenheitsleistung</small>
+            <strong>Ambulante Behandlung · Einzelsetting</strong>
+            <p>Patient allein anwesend. Pro Minute abrechenbar.</p>
+            <ul><li>Inkludiert: Begrüssung, Verabschiedung, unmittelbare Akteneinsicht</li></ul>
+          </div>
+          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+        </div>
+
+        <div class="idt-step" id="result-familie">
+          <button class="idt-back" onclick="showStep('step-3a')">← Zurück</button>
+          <div class="idt-result-box anw">
+            <small>EA.05.0030 · Anwesenheitsleistung</small>
+            <strong>Ambulante Behandlung · Familiensetting</strong>
+            <p>Patient + Eltern / Bezugspersonen anwesend. Gleiche Inklusionslogik wie 0010.</p>
+          </div>
+          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+        </div>
+
+        <div class="idt-step" id="result-krise">
+          <button class="idt-back" onclick="showStep('step-3a')">← Zurück</button>
+          <div class="idt-result-box" style="background:#fef3c7;border-color:#fca5a5;border-width:2px">
+            <small style="color:#7c2d12">EA.05.0050 · Krisenintervention</small>
+            <strong style="color:var(--navy)">Krisenintervention</strong>
+            <p>Nur bei <em>unvorhersehbarem</em>, überwältigendem Krisenzustand — ohne professionelle Hilfe nicht bewältigbar.</p>
+            <ul style="list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:4px">
+              <li style="font-size:13px;color:#7c2d12;display:flex;gap:6px"><span>!</span> Dokumentation: Auslöser · Bedrohungscharakter · Massnahmen · Mehraufwand</li>
+              <li style="font-size:13px;color:#7c2d12;display:flex;gap:6px"><span>⊘</span> Nicht kumulierbar mit 0010 / 0030 in derselben Sitzung</li>
+            </ul>
+          </div>
+          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+        </div>
+
+        <div class="idt-step" id="result-tele">
+          <button class="idt-back" onclick="showStep('step-3a')">← Zurück</button>
+          <div class="idt-result-box anw">
+            <small>EA.05.0070 · Anwesenheitsleistung</small>
+            <strong>Telemedizin synchron</strong>
+            <p>Video / Telefon als echte Behandlung in Echtzeit. Patient ist virtuell anwesend.</p>
+            <ul><li>Max. 1× pro Tag abrechenbar</li></ul>
+          </div>
+          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+        </div>
+
+        <div class="idt-step" id="result-akten">
+          <button class="idt-back" onclick="showStep('step-3b')">← Zurück</button>
+          <div class="idt-result-box lap">
+            <small>EA.05.0100 · LAP-Topf</small>
+            <strong>Fremdaktenstudium</strong>
+            <p>Nur externe Akten: Schulbericht, IV, frühere Klinik, SPD, Behörde.</p>
+            <ul><li>Eigene Verlaufsnotizen nachlesen zählt nicht</li></ul>
+          </div>
+          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+        </div>
+
+        <div class="idt-step" id="result-dritte">
+          <button class="idt-back" onclick="showStep('step-3b')">← Zurück</button>
+          <div class="idt-result-box lap">
+            <small>EA.05.0110 / 0130 · LAP-Topf</small>
+            <strong>Auskünfte / Besprechungen</strong>
+            <p>Fachlicher Inhalt mit Schule, Beistand, Sozialdienst, externen Behandlern.</p>
+            <ul>
+              <li>0110: Schule · Beistand · Sozialdienst · Behörde</li>
+              <li>0130: Externe Behandler / Betreuer</li>
+              <li>Nicht: reine Terminvereinbarungen</li>
+            </ul>
+          </div>
+          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+        </div>
+
+        <div class="idt-step" id="result-angeh">
+          <button class="idt-back" onclick="showStep('step-3b')">← Zurück</button>
+          <div class="idt-result-box lap">
+            <small>EA.05.0120 · LAP-Topf</small>
+            <strong>Auskünfte an/von Angehörigen</strong>
+            <p>Inhaltliches Telefonat mit Eltern / Bezugspersonen ohne Patient.</p>
+            <ul><li>Nur fachlicher Inhalt, nicht reine Organisation</li></ul>
+          </div>
+          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+        </div>
+
+        <div class="idt-step" id="result-plan">
+          <button class="idt-back" onclick="showStep('step-3b')">← Zurück</button>
+          <div class="idt-result-box lap">
+            <small>EA.05.0140 · LAP-Topf</small>
+            <strong>Schriftliche Therapie-/Hilfeplanung</strong>
+            <p>Hilfeplan, Netzplan, Krisenplan, Austrittsplanung.</p>
+            <ul><li>Das Ergebnis muss schriftlich in der Akte vorhanden sein!</li></ul>
+          </div>
+          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+        </div>
+
+        <div class="idt-step" id="result-wegzeit">
+          <button class="idt-back" onclick="showStep('step-3b')">← Zurück</button>
+          <div class="idt-result-box" style="background:#fffbeb;border-color:#fcd34d;border-width:2px">
+            <small style="color:#B45309">EA.05.0060 · Wegzeit</small>
+            <strong style="color:var(--navy)">Wegzeit</strong>
+            <p>Reine effektive Wegzeit hin + zurück. Nur innerhalb der Versorgungsregion.</p>
+            <ul style="list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:4px">
+              <li style="font-size:13px;color:#B45309;display:flex;gap:6px"><span>→</span> Max. 60 Min / Sitzung</li>
+              <li style="font-size:13px;color:#B45309;display:flex;gap:6px"><span>→</span> Nicht Teil der 4h-Regel</li>
+              <li style="font-size:13px;color:#B45309;display:flex;gap:6px"><span>→</span> Gespräch separat buchen</li>
+            </ul>
+          </div>
+          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+        </div>
+
+      </div><!-- /idt-interactive -->
+
+      <!-- VOLLANSICHT (statisch) -->
+      <div class="idt-fullview" id="idt-fullview">
+        <div class="idt-node">
+          <!-- Q1 -->
+          <div class="idt-q">
+            <small>Frage 1</small>
+            Ist es eine <strong>interne Tätigkeit</strong>?<br>
+            <span style="font-size:12px;color:rgba(255,255,255,0.6)">(Rapport, Supervision, Intervision, Terminvereinbarung, Leistungserfassung)</span>
+          </div>
+          <div class="idt-down">↓</div>
+          <div class="idt-fork">
+            <div class="idt-branch">
+              <div class="idt-branch-label y">JA</div>
+              <div class="idt-res rose">
+                <small>Resultat</small>
+                <strong>Nicht verrechenbar</strong>
+                Intern verbuchen — kein Patientenbudget
+              </div>
+            </div>
+            <div class="idt-branch">
+              <div class="idt-branch-label n">NEIN</div>
+              <!-- Q2 -->
+              <div class="idt-q">
+                <small>Frage 2</small>
+                Ist der Patient / die Familie <strong>anwesend</strong>?
+              </div>
+              <div class="idt-line"></div>
+              <div class="idt-sub-fork">
+                <div class="idt-sub-branch">
+                  <div class="idt-branch-label y">JA</div>
+                  <div class="idt-q" style="font-size:13px; max-width:none">
+                    <small>Frage 3</small>
+                    Was für ein Setting?
+                  </div>
+                  <div class="idt-line"></div>
+                  <div style="display:grid;gap:6px;width:100%">
+                    <div class="idt-res teal"><small>EA.05.0010</small><strong>Einzelsetting</strong>Patient allein anwesend</div>
+                    <div class="idt-res teal"><small>EA.05.0030</small><strong>Familiensetting</strong>Patient + Eltern / Bezugspersonen</div>
+                    <div class="idt-res teal"><small>EA.05.0050</small><strong>Krisenintervention</strong>Nur wenn Krise (unvorhersehbar, überwältigend)</div>
+                    <div class="idt-res blue"><small>EA.05.0070</small><strong>Telemedizin (synchron)</strong>Video/Telefon als echte Behandlung</div>
+                  </div>
+                  <div class="note" style="margin-top:10px;">
+                    <span class="note-icon">⚠️</span>
+                    Kurze direkte Vor-/Nachbereitung ist <strong>inkludiert</strong> — nicht zusätzlich als LAP buchen!
+                  </div>
+                </div>
+                <div class="idt-sub-branch">
+                  <div class="idt-branch-label n">NEIN</div>
+                  <div class="idt-q" style="font-size:13px; max-width:none">
+                    <small>Frage 3</small>
+                    Was für eine Abwesenheitsleistung?
+                  </div>
+                  <div class="idt-line"></div>
+                  <div style="display:grid;gap:6px;width:100%">
+                    <div class="idt-res blue"><small>EA.05.0100 · LAP-Topf</small><strong>Fremdaktenstudium</strong>Externe Berichte, IV-Akten, SPD-Bericht</div>
+                    <div class="idt-res blue"><small>EA.05.0110 · LAP-Topf</small><strong>Auskünfte an/von Dritten</strong>Schule, Beistand, Sozialdienst (fachlich, nicht org.)</div>
+                    <div class="idt-res blue"><small>EA.05.0120 · LAP-Topf</small><strong>Auskünfte Angehörige</strong>Inhaltliches Elterntelefonat ohne Patient</div>
+                    <div class="idt-res blue"><small>EA.05.0130 · LAP-Topf</small><strong>Besprechung externe Behandler</strong>Fachlicher Austausch mit ext. Betreuern</div>
+                    <div class="idt-res blue"><small>EA.05.0140 · LAP-Topf</small><strong>Schriftliche Hilfe-/Therapieplanung</strong>Nur wenn Ergebnis schriftlich vorhanden!</div>
+                    <div class="idt-res amber"><small>EA.05.0080</small><strong>Telemedizin zeitversetzt</strong>Max. 1×/Tag, max. 4×/30 Tage (E-Mail etc.)</div>
+                    <div class="idt-res amber"><small>EA.05.0060</small><strong>Wegzeit</strong>Max. 60 Min pro Sitzung · nicht im LAP-Topf</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /idt-fullview -->
+
+    </div><!-- /idt -->
   </section>
 
   <!-- ─── POSITIONEN ─── -->
@@ -827,7 +1174,6 @@
     <p class="section-lead">Überblick über die für Soziale Arbeit KJPP-Tagesklinik relevanten Tarifziffern.</p>
 
     <div class="pos-grid">
-
       <div class="pos-item">
         <div><span class="pos-code">EA.05.0010</span></div>
         <div>
@@ -836,7 +1182,6 @@
         </div>
         <span class="pos-badge badge-anw">Anwesenheit</span>
       </div>
-
       <div class="pos-item">
         <div><span class="pos-code">EA.05.0030</span></div>
         <div>
@@ -845,7 +1190,6 @@
         </div>
         <span class="pos-badge badge-anw">Anwesenheit</span>
       </div>
-
       <div class="pos-item">
         <div><span class="pos-code">EA.05.0050</span></div>
         <div>
@@ -854,7 +1198,6 @@
         </div>
         <span class="pos-badge badge-kris">Krise</span>
       </div>
-
       <div class="pos-item">
         <div><span class="pos-code">EA.05.0060</span></div>
         <div>
@@ -863,7 +1206,6 @@
         </div>
         <span class="pos-badge badge-weg">Wegzeit</span>
       </div>
-
       <div class="pos-item">
         <div><span class="pos-code">EA.05.0070</span></div>
         <div>
@@ -872,7 +1214,6 @@
         </div>
         <span class="pos-badge badge-anw">Anwesenheit</span>
       </div>
-
       <div class="pos-item">
         <div><span class="pos-code">EA.05.0080</span></div>
         <div>
@@ -881,7 +1222,6 @@
         </div>
         <span class="pos-badge badge-abw">LAP-Topf</span>
       </div>
-
       <div class="pos-item">
         <div><span class="pos-code">EA.05.0100</span></div>
         <div>
@@ -890,7 +1230,6 @@
         </div>
         <span class="pos-badge badge-abw">LAP-Topf</span>
       </div>
-
       <div class="pos-item">
         <div><span class="pos-code">EA.05.0110</span></div>
         <div>
@@ -899,7 +1238,6 @@
         </div>
         <span class="pos-badge badge-abw">LAP-Topf</span>
       </div>
-
       <div class="pos-item">
         <div><span class="pos-code">EA.05.0120</span></div>
         <div>
@@ -908,7 +1246,6 @@
         </div>
         <span class="pos-badge badge-abw">LAP-Topf</span>
       </div>
-
       <div class="pos-item">
         <div><span class="pos-code">EA.05.0130</span></div>
         <div>
@@ -917,7 +1254,6 @@
         </div>
         <span class="pos-badge badge-abw">LAP-Topf</span>
       </div>
-
       <div class="pos-item">
         <div><span class="pos-code">EA.05.0140</span></div>
         <div>
@@ -926,7 +1262,6 @@
         </div>
         <span class="pos-badge badge-abw">LAP-Topf</span>
       </div>
-
     </div>
   </section>
 
@@ -942,7 +1277,6 @@
     <div class="budget-box" style="margin-bottom:24px">
       <div class="budget-title">Beispielrechnung: LAP-Topf</div>
       <div class="budget-sub">Wie schnell 240 Minuten aufgebraucht sind</div>
-
       <div class="budget-bar-wrap">
         <div class="budget-bar" id="budgetBar" style="width:0%"></div>
       </div>
@@ -950,7 +1284,6 @@
         <span>0 Min</span>
         <span>240 Min (Limit)</span>
       </div>
-
       <div class="budget-items">
         <div class="budget-item">
           <span class="budget-item-label">📄 Fremdaktenstudium (externer Schulbericht)</span>
@@ -973,7 +1306,6 @@
           <span class="budget-item-min">10 Min</span>
         </div>
       </div>
-
       <div class="budget-total">
         <span style="color:rgba(255,255,255,0.7)">Aufgebraucht:</span>
         <span class="budget-total-num">110 / 240 Min</span>
@@ -1020,7 +1352,6 @@
 
     <div class="card" style="padding:28px">
       <div style="display:grid; gap:14px;">
-
         <div style="display:flex; gap:16px; align-items:flex-start; padding:16px; background:#FAFAF7; border-radius:10px; border:1px solid #e2e8f0">
           <div style="width:36px;height:36px;border-radius:50%;background:var(--navy);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0">1</div>
           <div>
@@ -1028,7 +1359,6 @@
             <div style="font-size:13px;color:var(--slate)">Terminvereinbarungen und administrative Absprachen sind nicht abrechenbar. Fachliche Beratung, Auskunft, Abklärung schon.</div>
           </div>
         </div>
-
         <div style="display:flex; gap:16px; align-items:flex-start; padding:16px; background:#FAFAF7; border-radius:10px; border:1px solid #e2e8f0">
           <div style="width:36px;height:36px;border-radius:50%;background:var(--navy);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0">2</div>
           <div>
@@ -1036,7 +1366,6 @@
             <div style="font-size:13px;color:var(--slate)">Nur dann LAP-Topf. Wenn Patient dabei ist → Anwesenheitsleistung (EA.05.0010/0030).</div>
           </div>
         </div>
-
         <div style="display:flex; gap:16px; align-items:flex-start; padding:16px; background:#FAFAF7; border-radius:10px; border:1px solid #e2e8f0">
           <div style="width:36px;height:36px;border-radius:50%;background:var(--navy);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0">3</div>
           <div>
@@ -1044,7 +1373,6 @@
             <div style="font-size:13px;color:var(--slate)">Schule, Beistand, Sozialdienst, andere Klinik = extern. Eigene Kolleginnen = intern, nicht abrechenbar.</div>
           </div>
         </div>
-
         <div style="display:flex; gap:16px; align-items:flex-start; padding:16px; background:#FAFAF7; border-radius:10px; border:1px solid #e2e8f0">
           <div style="width:36px;height:36px;border-radius:50%;background:var(--navy);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0">4</div>
           <div>
@@ -1052,7 +1380,6 @@
             <div style="font-size:13px;color:var(--slate)">Gerade Fälle mit viel Schule, Beistand, Eltern, Netzwerk: LAP-Topf regelmässig prüfen. Viele kleine Kontakte summieren sich schnell.</div>
           </div>
         </div>
-
       </div>
 
       <!-- Zuordnung -->
@@ -1088,7 +1415,6 @@
     <p class="section-lead">Typische Situationen aus dem Tagesklinikalltag — so würde man denken.</p>
 
     <div class="scenario-grid">
-
       <div class="scenario-card">
         <div class="scenario-num">1</div>
         <div class="scenario-body">
@@ -1097,7 +1423,6 @@
           <span class="scenario-answer">→ EA.05.0120 (LAP-Topf)</span>
         </div>
       </div>
-
       <div class="scenario-card">
         <div class="scenario-num">2</div>
         <div class="scenario-body">
@@ -1106,7 +1431,6 @@
           <span class="scenario-answer" style="background:#fef3c7;border-color:#fde68a;color:#7c2d12">✕ Nicht separat abrechenbar</span>
         </div>
       </div>
-
       <div class="scenario-card">
         <div class="scenario-num">3</div>
         <div class="scenario-body">
@@ -1115,7 +1439,6 @@
           <span class="scenario-answer">→ EA.05.0100 (LAP-Topf)</span>
         </div>
       </div>
-
       <div class="scenario-card">
         <div class="scenario-num">4</div>
         <div class="scenario-body">
@@ -1124,7 +1447,6 @@
           <span class="scenario-answer">→ EA.05.0110 (LAP-Topf)</span>
         </div>
       </div>
-
       <div class="scenario-card">
         <div class="scenario-num">5</div>
         <div class="scenario-body">
@@ -1133,7 +1455,6 @@
           <span class="scenario-answer">→ EA.05.0140 (LAP-Topf)</span>
         </div>
       </div>
-
       <div class="scenario-card">
         <div class="scenario-num">6</div>
         <div class="scenario-body">
@@ -1142,7 +1463,6 @@
           <span class="scenario-answer">→ EA.05.0060 (max 60 Min) + Gespräch separat</span>
         </div>
       </div>
-
       <div class="scenario-card">
         <div class="scenario-num">7</div>
         <div class="scenario-body">
@@ -1151,7 +1471,6 @@
           <span class="scenario-answer" style="background:#fef3c7;border-color:#fde68a;color:#7c2d12">✕ Nicht verrechenbar (intern)</span>
         </div>
       </div>
-
       <div class="scenario-card">
         <div class="scenario-num">8</div>
         <div class="scenario-body">
@@ -1160,7 +1479,6 @@
           <span class="scenario-answer" style="background:#fef3c7;border-color:#fca5a5;color:#7c2d12">→ EA.05.0050 Krisenintervention</span>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -1173,7 +1491,6 @@
     <p class="section-lead">Kurz — aber tariflich nachvollziehbar. Das ist das Ziel.</p>
 
     <div class="card-grid card-grid-2">
-
       <div class="card">
         <div style="font-weight:700;font-size:13px;color:var(--teal);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">👥 Einzel- / Familiengespräch</div>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
@@ -1183,7 +1500,6 @@
           <li style="font-size:13.5px;display:flex;gap:8px"><span style="color:var(--teal)">•</span> Ergebnis / nächster Schritt</li>
         </ul>
       </div>
-
       <div class="card">
         <div style="font-weight:700;font-size:13px;color:#1E656D;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">🌐 Netzwerkarbeit (LAP)</div>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
@@ -1193,7 +1509,6 @@
           <li style="font-size:13.5px;display:flex;gap:8px"><span style="color:#1E656D">•</span> Konkrete Folgevereinbarung</li>
         </ul>
       </div>
-
       <div class="card">
         <div style="font-weight:700;font-size:13px;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">📋 Hilfeplanung (EA.05.0140)</div>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
@@ -1202,7 +1517,6 @@
           <li style="font-size:13.5px;display:flex;gap:8px"><span style="color:var(--amber)">•</span> <strong>Wo in der Akte ersichtlich?</strong></li>
         </ul>
       </div>
-
       <div class="card" style="border-color:#fca5a5">
         <div style="font-weight:700;font-size:13px;color:var(--rose);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">⚡ Krise (EA.05.0050)</div>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
@@ -1213,12 +1527,11 @@
           <li style="font-size:13.5px;display:flex;gap:8px"><span style="color:var(--rose)">•</span> Begründung des Mehraufwands</li>
         </ul>
       </div>
-
     </div>
   </section>
 
-  <!-- ─── PE010 HINWEIS ─── -->
-  <div class="note" style="margin-bottom:40px">
+  <!-- ─── PE010 HINWEIS (ausführlich, bleibt in Abschnitt 8) ─── -->
+  <div class="note" style="margin-bottom:40px" id="pe010-detail">
     <span class="note-icon">⚠️</span>
     <div>
       <strong style="color:#92400e">Wichtig: PE010 gilt für Soziale Arbeit nicht als allgemeine Standardregel</strong><br>
@@ -1263,37 +1576,104 @@
      </div>
   </section>
 </main>
+
 <!-- FOOTER -->
 <footer class="footer">
   <span>Tarif-Kompass 2026 · Soziale Arbeit KJPP-Tagesklinik · Nichtärztliche Mitarbeitende</span>
-   <span>Referenz: TARDOC Kapitel EA.05 · Gültig ab 01.01.2026</span>
+  <span>Referenz: TARDOC Kapitel EA.05 · Gültig ab 01.01.2026</span>
 </footer>
+
 <script>
-  // Animate budget bar on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const bar = document.getElementById('budgetBar');
-        if (bar) {
-          setTimeout(() => {
-            bar.style.width = Math.round(110/240*100) + '%';
-          }, 200);
-        }
+  // ── INTERAKTIVER ENTSCHEIDUNGSBAUM ──
+  function showStep(id) {
+    document.querySelectorAll('.idt-step').forEach(el => el.classList.remove('visible'));
+    const target = document.getElementById(id);
+    if (target) target.classList.add('visible');
+  }
+
+  function setMode(mode) {
+    const interactive = document.getElementById('idt-interactive');
+    const fullview = document.getElementById('idt-fullview');
+    const btnI = document.getElementById('btn-interactive');
+    const btnF = document.getElementById('btn-full');
+    if (mode === 'interactive') {
+      interactive.style.display = 'flex';
+      fullview.classList.remove('visible');
+      btnI.classList.add('active'); btnI.setAttribute('aria-pressed','true');
+      btnF.classList.remove('active'); btnF.setAttribute('aria-pressed','false');
+      showStep('step-1');
+    } else {
+      interactive.style.display = 'none';
+      fullview.classList.add('visible');
+      btnI.classList.remove('active'); btnI.setAttribute('aria-pressed','false');
+      btnF.classList.add('active'); btnF.setAttribute('aria-pressed','true');
+    }
+  }
+
+  // ── MOBILE HAMBURGER ──
+  const hamburger = document.getElementById('nav-hamburger');
+  const mobileMenu = document.getElementById('nav-mobile');
+  const hamburgerIcon = document.getElementById('hamburger-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    hamburgerIcon.style.display = isOpen ? 'none' : 'block';
+    closeIcon.style.display = isOpen ? 'block' : 'none';
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.nav-mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburgerIcon.style.display = 'block';
+      closeIcon.style.display = 'none';
+    });
+  });
+
+  // ── ACTIVE NAV LINK (Intersection Observer) ──
+  const sections = document.querySelectorAll('section[id], div[id="pe010-detail"]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const mobileLinks = document.querySelectorAll('.nav-mobile-link');
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
+        mobileLinks.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
       }
     });
-  }, { threshold: 0.3 });
+  }, { rootMargin: '-20% 0px -60% 0px' });
 
-  const budgetBox = document.querySelector('.budget-box');
-  if (budgetBox) observer.observe(budgetBox);
+  sections.forEach(s => sectionObserver.observe(s));
 
-  // Smooth scroll for nav links
-  document.querySelectorAll('.nav-link').forEach(link => {
+  // ── SMOOTH SCROLL ──
+  document.querySelectorAll('.nav-link, .nav-mobile-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
       const target = document.querySelector(link.getAttribute('href'));
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  // ── BUDGET BAR ANIMATION ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const bar = document.getElementById('budgetBar');
+        if (bar) setTimeout(() => { bar.style.width = Math.round(110/240*100) + '%'; }, 200);
+      }
+    });
+  }, { threshold: 0.3 });
+  const budgetBox = document.querySelector('.budget-box');
+  if (budgetBox) observer.observe(budgetBox);
 </script>
 
 </body>
