@@ -118,67 +118,205 @@
   }
   .header-meta-item svg { color: var(--teal-light); }
 
-  /* ── LAYOUT ── */
-  .main { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+  /* ── LAYOUT: Sidebar + Content ── */
+  .page-layout {
+    display: flex;
+    align-items: flex-start;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .main { flex: 1; min-width: 0; padding: 40px 40px 80px; max-width: 900px; }
 
-  /* ── NAV BAR (Desktop: horizontal scroll, Mobile: Hamburger) ── */
+  /* ── SIDEBAR NAV (Desktop ≥900px) ── */
+  .sidebar-nav {
+    width: 200px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 24px;
+    height: calc(100vh - 48px);
+    overflow-y: auto;
+    padding: 28px 0 28px 24px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  .sidebar-nav::-webkit-scrollbar { width: 4px; }
+  .sidebar-nav::-webkit-scrollbar-track { background: transparent; }
+  .sidebar-nav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+  .sidebar-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 12px;
+    padding-left: 12px;
+  }
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--slate);
+    text-decoration: none;
+    border-radius: 8px;
+    border-left: 3px solid transparent;
+    transition: all .15s;
+    margin-bottom: 2px;
+    line-height: 1.3;
+  }
+  .nav-link .nav-num {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--slate-light);
+    min-width: 14px;
+    flex-shrink: 0;
+  }
+  .nav-link:hover {
+    background: rgba(30,101,109,0.06);
+    color: var(--teal);
+    border-left-color: var(--teal);
+  }
+  .nav-link:hover .nav-num { color: var(--teal); }
+  .nav-link.active {
+    background: rgba(30,101,109,0.10);
+    color: var(--teal);
+    border-left-color: var(--teal);
+    font-weight: 600;
+  }
+  .nav-link.active .nav-num { color: var(--teal); }
+  .sidebar-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 12px 12px 12px 12px;
+  }
+
+  /* ── TABLET NAV (600–900px): Compact top bar ── */
   .nav-bar {
+    display: none;
     background: white;
     border-bottom: 1px solid var(--border);
     position: sticky; top: 0; z-index: 100;
     box-shadow: 0 1px 8px rgba(0,0,0,0.06);
   }
-  /* Desktop nav */
   .nav-inner {
     max-width: 900px; margin: 0 auto;
-    padding: 0 24px;
-    display: flex; gap: 2px; overflow-x: auto;
+    padding: 0 16px;
+    display: flex; gap: 0; overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     align-items: center;
   }
   .nav-inner::-webkit-scrollbar { display: none; }
-  .nav-link {
-    display: block; padding: 14px 14px;
-    font-size: 12.5px; font-weight: 500;
-    color: var(--slate);
-    text-decoration: none; white-space: nowrap;
+  .nav-bar .nav-link {
+    padding: 12px 10px;
+    font-size: 11.5px;
+    border-radius: 0;
+    border-left: none;
     border-bottom: 2px solid transparent;
-    transition: all .2s;
+    margin-bottom: 0;
+    white-space: nowrap;
+    background: none;
   }
-  .nav-link:hover, .nav-link.active { color: var(--teal); border-bottom-color: var(--teal); }
-  /* Mobile hamburger toggle — hidden on desktop */
-  .nav-hamburger {
-    display: none;
-    margin-left: auto;
-    padding: 14px 16px;
-    background: none; border: none; cursor: pointer;
-    color: var(--slate); font-size: 20px; line-height: 1;
-    flex-shrink: 0;
+  .nav-bar .nav-link:hover, .nav-bar .nav-link.active {
+    background: none;
+    border-bottom-color: var(--teal);
+    border-left-color: transparent;
   }
-  /* Mobile dropdown menu */
-  .nav-mobile-menu {
+
+  /* ── MOBILE NAV (≤600px): Bottom Sheet ── */
+  .nav-hamburger { display: none; }
+  .nav-mobile-menu { display: none; }
+  .bottom-nav-btn {
     display: none;
-    flex-direction: column;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 300;
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    gap: 8px;
+    align-items: center;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .bottom-nav-btn:hover { transform: translateX(-50%) translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.3); }
+  /* Bottom sheet overlay */
+  .bottom-sheet-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 400;
+    backdrop-filter: blur(2px);
+  }
+  .bottom-sheet-overlay.open { display: block; }
+  /* Bottom sheet panel */
+  .bottom-sheet {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
     background: white;
-    border-top: 1px solid var(--border);
-    padding: 8px 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 20px 20px 0 0;
+    padding: 0 0 env(safe-area-inset-bottom, 16px);
+    z-index: 500;
+    transform: translateY(100%);
+    transition: transform .3s cubic-bezier(0.32, 0.72, 0, 1);
+    box-shadow: 0 -4px 32px rgba(0,0,0,0.15);
+    max-height: 80vh;
+    overflow-y: auto;
   }
-  .nav-mobile-menu.open { display: flex; }
-  .nav-mobile-menu a {
-    padding: 12px 24px;
-    font-size: 14px; font-weight: 500;
+  .bottom-sheet.open { transform: translateY(0); }
+  .bottom-sheet-handle {
+    width: 40px; height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    margin: 12px auto 0;
+  }
+  .bottom-sheet-header {
+    padding: 12px 20px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--slate);
+    border-bottom: 1px solid var(--border);
+  }
+  .bottom-sheet-links {
+    padding: 8px 0 16px;
+  }
+  .bottom-sheet-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
     text-decoration: none;
     border-left: 3px solid transparent;
-    transition: all .15s;
+    transition: all .12s;
   }
-  .nav-mobile-menu a:hover, .nav-mobile-menu a.active {
+  .bottom-sheet-link .bs-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--slate-light);
+    min-width: 16px;
+  }
+  .bottom-sheet-link:hover, .bottom-sheet-link.active {
+    background: rgba(30,101,109,0.07);
     color: var(--teal);
     border-left-color: var(--teal);
-    background: #f0fdfa;
   }
+  .bottom-sheet-link.active .bs-num { color: var(--teal); }
 
   /* ── SECTION ── */
   .section { margin-bottom: 52px; scroll-margin-top: 60px; }
@@ -647,9 +785,24 @@
   .dl-btn.secondary { background: #1E656D; color: white; }
   .dl-btn svg { flex-shrink: 0; }
 
+  /* ── TABLET (600–900px) ── */
+  @media (max-width: 900px) {
+    .sidebar-nav { display: none; }
+    .nav-bar { display: block; }
+    .page-layout { display: block; }
+    .main { padding: 24px 24px 80px; max-width: 100%; }
+  }
+
+  /* ── MOBILE (≤600px) ── */
+  @media (max-width: 600px) {
+    .nav-bar { display: none; }
+    .bottom-nav-btn { display: flex; }
+    .main { padding: 20px 16px 100px; }
+  }
+
   /* ── PRINT STYLES ── */
   @media print {
-    .nav-bar, .dl-bar, .header::before, .header::after { display: none !important; }
+    .nav-bar, .sidebar-nav, .bottom-nav-btn, .bottom-sheet, .bottom-sheet-overlay, .dl-bar, .header::before, .header::after { display: none !important; }
     body { background: white; font-size: 12px; }
     .header { padding: 20px 24px; border-radius: 0; }
     .main { padding: 20px 24px; }
@@ -672,11 +825,7 @@
     .scenario-num { writing-mode: horizontal-tb; padding: 12px; font-size: 14px; height: auto; }
     .idt-fork, .idt-sub-fork { flex-direction: column; }
     .budget-item { flex-direction: column; gap: 4px; }
-    /* Mobile: Hamburger statt horizontal nav */
-    .nav-inner { display: none; }
-    .nav-hamburger { display: flex; align-items: center; justify-content: center; }
-    .nav-bar { overflow: visible; }
-    .dl-bar { bottom: 12px; right: 12px; gap: 6px; }
+    .dl-bar { bottom: 80px; right: 12px; gap: 6px; }
     .dl-btn { font-size: 11.5px; padding: 10px 14px; }
     .idt-choices { flex-direction: column; }
     .idt-choice { min-width: unset; }
@@ -734,37 +883,60 @@
   </div>
 </header>
 
-<!-- NAV (Desktop: horizontal scroll + active indicator; Mobile: Hamburger) -->
+<!-- TABLET NAV (600–900px): Compact horizontal bar -->
 <nav class="nav-bar" id="main-nav" aria-label="Seitennavigation">
-  <!-- Desktop links -->
   <div class="nav-inner" id="nav-desktop">
-    <a href="#grundregeln" class="nav-link">1 · Grundregeln</a>
-    <a href="#limits" class="nav-link">2 · Limits</a>
-    <a href="#entscheidung" class="nav-link">3 · Entscheidungsbaum</a>
-    <a href="#positionen" class="nav-link">4 · Positionen</a>
-    <a href="#lap-topf" class="nav-link">5 · LAP-Topf</a>
-    <a href="#netzwerk" class="nav-link">6 · Netzwerkarbeit</a>
-    <a href="#szenarien" class="nav-link">7 · Szenarien</a>
-    <a href="#verlauf" class="nav-link">8 · Verlaufseintrag</a>
-    <a href="#kurzfassung" class="nav-link">9 · Kurzfassung</a>
+    <a href="#grundregeln" class="nav-link"><span class="nav-num">1</span>Grundregeln</a>
+    <a href="#limits" class="nav-link"><span class="nav-num">2</span>Limits</a>
+    <a href="#entscheidung" class="nav-link"><span class="nav-num">3</span>Baum</a>
+    <a href="#positionen" class="nav-link"><span class="nav-num">4</span>Positionen</a>
+    <a href="#lap-topf" class="nav-link"><span class="nav-num">5</span>LAP-Topf</a>
+    <a href="#netzwerk" class="nav-link"><span class="nav-num">6</span>Netzwerk</a>
+    <a href="#szenarien" class="nav-link"><span class="nav-num">7</span>Szenarien</a>
+    <a href="#verlauf" class="nav-link"><span class="nav-num">8</span>Verlauf</a>
+    <a href="#kurzfassung" class="nav-link"><span class="nav-num">9</span>Kurzfassung</a>
   </div>
-  <!-- Mobile hamburger button -->
-  <button class="nav-hamburger" id="nav-hamburger" aria-label="Navigation öffnen" aria-expanded="false" aria-controls="nav-mobile">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" id="hamburger-icon"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" id="close-icon" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-  </button>
-  <!-- Mobile dropdown -->
-  <div class="nav-mobile-menu" id="nav-mobile" role="menu">
-    <a href="#grundregeln" class="nav-mobile-link" role="menuitem">1 · Grundregeln</a>
-    <a href="#limits" class="nav-mobile-link" role="menuitem">2 · Limits</a>
-    <a href="#entscheidung" class="nav-mobile-link" role="menuitem">3 · Entscheidungsbaum</a>
-    <a href="#positionen" class="nav-mobile-link" role="menuitem">4 · Positionen</a>
-    <a href="#lap-topf" class="nav-mobile-link" role="menuitem">5 · LAP-Topf</a>
-    <a href="#netzwerk" class="nav-mobile-link" role="menuitem">6 · Netzwerkarbeit</a>
-    <a href="#szenarien" class="nav-mobile-link" role="menuitem">7 · Szenarien</a>
-    <a href="#verlauf" class="nav-mobile-link" role="menuitem">8 · Verlaufseintrag</a>
-    <a href="#kurzfassung" class="nav-mobile-link" role="menuitem">9 · Kurzfassung</a>
-  </div>
+</nav>
+
+<!-- MOBILE BOTTOM NAV BUTTON -->
+<button class="bottom-nav-btn" id="bottom-nav-btn" aria-label="Navigation öffnen" aria-haspopup="dialog">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  Abschnitte
+</button>
+
+<!-- MOBILE BOTTOM SHEET -->
+<div class="bottom-sheet-overlay" id="bottom-sheet-overlay" role="presentation"></div>
+<div class="bottom-sheet" id="bottom-sheet" role="dialog" aria-label="Navigation" aria-modal="true">
+  <div class="bottom-sheet-handle"></div>
+  <div class="bottom-sheet-header">Tarif-Kompass 2026</div>
+  <nav class="bottom-sheet-links" aria-label="Abschnitte">
+    <a href="#grundregeln" class="bottom-sheet-link"><span class="bs-num">1</span>Die 5 Grundregeln</a>
+    <a href="#limits" class="bottom-sheet-link"><span class="bs-num">2</span>Mengengrenzen</a>
+    <a href="#entscheidung" class="bottom-sheet-link"><span class="bs-num">3</span>Entscheidungsbaum</a>
+    <a href="#positionen" class="bottom-sheet-link"><span class="bs-num">4</span>Alle Positionen</a>
+    <a href="#lap-topf" class="bottom-sheet-link"><span class="bs-num">5</span>LAP-Topf Detail</a>
+    <a href="#netzwerk" class="bottom-sheet-link"><span class="bs-num">6</span>Netzwerkarbeit</a>
+    <a href="#szenarien" class="bottom-sheet-link"><span class="bs-num">7</span>Alltagsszenarien</a>
+    <a href="#verlauf" class="bottom-sheet-link"><span class="bs-num">8</span>Verlaufseintrag</a>
+    <a href="#kurzfassung" class="bottom-sheet-link"><span class="bs-num">9</span>Kurzfassung</a>
+  </nav>
+</div>
+
+<div class="page-layout">
+
+<!-- SIDEBAR NAV (Desktop ≥900px) -->
+<nav class="sidebar-nav" id="sidebar-nav" aria-label="Seitennavigation">
+  <div class="sidebar-title">Inhalt</div>
+  <a href="#grundregeln" class="nav-link"><span class="nav-num">1</span>Grundregeln</a>
+  <a href="#limits" class="nav-link"><span class="nav-num">2</span>Limits</a>
+  <a href="#entscheidung" class="nav-link"><span class="nav-num">3</span>Entscheidungsbaum</a>
+  <a href="#positionen" class="nav-link"><span class="nav-num">4</span>Positionen</a>
+  <a href="#lap-topf" class="nav-link"><span class="nav-num">5</span>LAP-Topf</a>
+  <div class="sidebar-divider"></div>
+  <a href="#netzwerk" class="nav-link"><span class="nav-num">6</span>Netzwerkarbeit</a>
+  <a href="#szenarien" class="nav-link"><span class="nav-num">7</span>Szenarien</a>
+  <a href="#verlauf" class="nav-link"><span class="nav-num">8</span>Verlaufseintrag</a>
+  <a href="#kurzfassung" class="nav-link"><span class="nav-num">9</span>Kurzfassung</a>
 </nav>
 
 <main class="main" id="main-content">
@@ -1596,6 +1768,8 @@
   </section>
 </main>
 
+</div><!-- /.page-layout -->
+
 <!-- FOOTER -->
 <footer class="footer">
   <span>Tarif-Kompass 2026 · Soziale Arbeit KJPP-Tagesklinik · Nichtärztliche Mitarbeitende</span>
@@ -1632,33 +1806,43 @@
     }
   }
 
-  // ── MOBILE HAMBURGER ──
-  const hamburger = document.getElementById('nav-hamburger');
-  const mobileMenu = document.getElementById('nav-mobile');
-  const hamburgerIcon = document.getElementById('hamburger-icon');
-  const closeIcon = document.getElementById('close-icon');
+  // ── MOBILE BOTTOM SHEET ──
+  const bottomNavBtn = document.getElementById('bottom-nav-btn');
+  const bottomSheet = document.getElementById('bottom-sheet');
+  const bottomSheetOverlay = document.getElementById('bottom-sheet-overlay');
 
-  hamburger.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', isOpen);
-    hamburgerIcon.style.display = isOpen ? 'none' : 'block';
-    closeIcon.style.display = isOpen ? 'block' : 'none';
-  });
+  function openBottomSheet() {
+    bottomSheet.classList.add('open');
+    bottomSheetOverlay.classList.add('open');
+    bottomNavBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeBottomSheet() {
+    bottomSheet.classList.remove('open');
+    bottomSheetOverlay.classList.remove('open');
+    bottomNavBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
 
-  // Close mobile menu on link click
-  document.querySelectorAll('.nav-mobile-link').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      hamburgerIcon.style.display = 'block';
-      closeIcon.style.display = 'none';
+  if (bottomNavBtn) {
+    bottomNavBtn.addEventListener('click', openBottomSheet);
+    bottomSheetOverlay.addEventListener('click', closeBottomSheet);
+  }
+
+  // Close bottom sheet on link click
+  document.querySelectorAll('.bottom-sheet-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeBottomSheet();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 320);
     });
   });
 
   // ── ACTIVE NAV LINK (Intersection Observer) ──
   const sections = document.querySelectorAll('section[id], div[id="pe010-detail"]');
   const navLinks = document.querySelectorAll('.nav-link');
-  const mobileLinks = document.querySelectorAll('.nav-mobile-link');
+  const bottomSheetLinks = document.querySelectorAll('.bottom-sheet-link');
 
   const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1667,7 +1851,7 @@
         navLinks.forEach(l => {
           l.classList.toggle('active', l.getAttribute('href') === '#' + id);
         });
-        mobileLinks.forEach(l => {
+        bottomSheetLinks.forEach(l => {
           l.classList.toggle('active', l.getAttribute('href') === '#' + id);
         });
       }
@@ -1676,8 +1860,8 @@
 
   sections.forEach(s => sectionObserver.observe(s));
 
-  // ── SMOOTH SCROLL ──
-  document.querySelectorAll('.nav-link, .nav-mobile-link').forEach(link => {
+  // ── SMOOTH SCROLL (Sidebar + Tablet Nav) ──
+  document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
       const target = document.querySelector(link.getAttribute('href'));
