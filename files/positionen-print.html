@@ -8,12 +8,12 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --ink:#0d1b2a;--teal:#0a7c71;--teal-l:#e6f4f2;--teal-m:#a7d9d5;
+  --ink:#0d1b2a;--teal:#0a6b61;--teal-l:#e6f4f2;--teal-m:#a7d9d5;
   --blue:#1a4fa3;--blue-l:#eaf0fb;--blue-m:#a3bfe8;
-  --amber:#b85c00;--amber-l:#fef3e2;--amber-m:#e8c68a;
+  --amber:#92400e;--amber-l:#fef3e2;--amber-m:#e8c68a;
   --rose:#c0103a;--rose-l:#fdf0f3;--rose-m:#f0b8c5;
   --green:#1a6b3a;--green-l:#ebf6ef;--green-m:#a7d9bc;
-  --mid:#4a5568;--soft:#718096;--line:#dde3eb;--bg:#edf0f4;--paper:#fff;
+  --mid:#4a5568;--soft:#64748b;--line:#dde3eb;--bg:#edf0f4;--paper:#fff;
 }
 body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 16px}
 .printbar{width:210mm;max-width:100%;background:white;border-radius:10px;padding:11px 20px;display:flex;align-items:center;gap:12px;margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
@@ -102,15 +102,16 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
 </head>
 <body>
 
-<div class="printbar">
+<nav class="printbar" aria-label="Drucknavigation">
   <div class="printbar-label"><strong>Positions-Übersicht EA.05</strong> · 1 Seite A4 · Tarif-Kompass 2026</div>
   <a class="pbtn pbtn-ghost" href="../index.html">← Zurück</a>
   <button class="pbtn pbtn-dark" onclick="window.print()">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
     Als PDF drucken
   </button>
-</div>
+</nav>
 
+<main>
 <div class="sheet">
   <div class="mast">
     <div class="mast-top">
@@ -282,5 +283,6 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
     <span>TARDOC Kapitel EA.05 · tardoc.netlify.app</span>
   </div>
 </div>
+</main>
 </body>
 </html>

@@ -12,7 +12,7 @@
   --blue:#1a4fa3;--blue-l:#eaf0fb;--blue-m:#a3bfe8;
   --amber:#b85c00;--amber-l:#fef3e2;--amber-m:#e8c68a;
   --rose:#c0103a;--rose-l:#fdf0f3;--rose-m:#f0b8c5;
-  --slate:#2d3748;--mid:#4a5568;--soft:#718096;--faint:#94a3b8;
+  --slate:#2d3748;--mid:#4a5568;--soft:#64748b;--faint:#64748b;
   --line:#dde3eb;--writeline:#e8edf5;--bg:#edf0f4;--paper:#fff;
 }
 body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 16px}
@@ -43,13 +43,13 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
 /* template block */
 .tmpl{border-radius:8px;overflow:hidden;border:1.5px solid var(--line)}
 .tmpl-head{padding:7px 12px;display:flex;justify-content:space-between;align-items:center}
-.tmpl-head h3{font-size:10pt;font-weight:700;color:white;display:flex;align-items:center;gap:7px}
-.tmpl-head .ziffer{font-size:7.5pt;font-weight:700;background:rgba(255,255,255,.18);color:white;padding:2px 8px;border-radius:10px}
-.tmpl.g .tmpl-head{background:var(--teal)}
-.tmpl.l .tmpl-head{background:var(--blue)}
-.tmpl.p .tmpl-head{background:var(--amber)}
-.tmpl.k .tmpl-head{background:var(--rose)}
-.tmpl.w .tmpl-head{background:var(--mid)}
+.tmpl-head h2{font-size:10pt;font-weight:700;color:white;display:flex;align-items:center;gap:7px}
+.tmpl-head .ziffer{font-size:7.5pt;font-weight:700;background:rgba(0,0,0,.35);color:white;padding:2px 8px;border-radius:10px}
+.tmpl.g .tmpl-head{background:#065f55}
+.tmpl.l .tmpl-head{background:#1e3a8a}
+.tmpl.p .tmpl-head{background:#7c3400}
+.tmpl.k .tmpl-head{background:#881337}
+.tmpl.w .tmpl-head{background:#374151}
 .tmpl-hint{font-size:7.5pt;color:var(--soft);font-style:italic;padding:5px 12px 0;line-height:1.4;border-left:3px solid var(--line);margin:6px 12px 0}
 .tmpl.g .tmpl-hint{border-left-color:var(--teal-m)}
 .tmpl.l .tmpl-hint{border-left-color:var(--blue-m)}
@@ -97,15 +97,16 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
 </head>
 <body>
 
-<div class="printbar">
+<nav class="printbar" aria-label="Drucknavigation">
   <div class="printbar-label"><strong>Verlaufseintrag-Vorlagen</strong> · 1 Seite A4 · Tarif-Kompass 2026</div>
   <a class="pbtn pbtn-ghost" href="../index.html">← Zurück</a>
   <button class="pbtn pbtn-dark" onclick="window.print()">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
     Als PDF drucken
   </button>
-</div>
+</nav>
 
+<main>
 <div class="sheet">
   <div class="mast">
     <div class="mast-row">
@@ -131,7 +132,7 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
       <!-- GESPRÄCH -->
       <div class="tmpl g">
         <div class="tmpl-head">
-          <h3>👥 Einzel- / Familiengespräch</h3>
+          <h2>👥 Einzel- / Familiengespräch</h2>
           <span class="ziffer">0010 / 0030</span>
         </div>
         <div class="tmpl-hint">Anwesenheitsleistung — kurze Vor-/Nachbereitung ist inkludiert, nicht separat buchen.</div>
@@ -152,7 +153,7 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
       <!-- LAP -->
       <div class="tmpl l">
         <div class="tmpl-head">
-          <h3>🌐 Netzwerkarbeit / LAP</h3>
+          <h2>🌐 Netzwerkarbeit / LAP</h2>
           <span class="ziffer">0110 / 0120 / 0130</span>
         </div>
         <div class="tmpl-hint">Leistung in Abwesenheit — aus dem 240-Min-Topf. Fachlicher Inhalt, nicht Terminorganisation.</div>
@@ -178,7 +179,7 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
       <!-- HILFEPLANUNG -->
       <div class="tmpl p">
         <div class="tmpl-head">
-          <h3>📋 Hilfe-/Therapieplanung</h3>
+          <h2>📋 Hilfe-/Therapieplanung</h2>
           <span class="ziffer">EA.05.0140</span>
         </div>
         <div class="tmpl-hint">Das Ergebnis muss schriftlich in der Akte vorhanden sein — sonst nicht abrechenbar!</div>
@@ -199,7 +200,7 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
       <!-- KRISE -->
       <div class="tmpl k">
         <div class="tmpl-head">
-          <h3>⚡ Krisenintervention</h3>
+          <h2>⚡ Krisenintervention</h2>
           <span class="ziffer">EA.05.0050</span>
         </div>
         <div class="tmpl-hint">Nur bei unvorhersehbarem, überwältigendem Krisenzustand — ohne professionelle Hilfe nicht bewältigbar.</div>
@@ -222,7 +223,7 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
     <!-- WEGZEIT -->
     <div class="tmpl w">
       <div class="tmpl-head">
-        <h3>🚗 Wegzeit</h3>
+        <h2>🚗 Wegzeit</h2>
         <span class="ziffer">EA.05.0060 · max. 60 Min / Sitzung · nicht Teil der 4h-Regel · Gespräch separat buchen</span>
       </div>
       <div class="tmpl-body" style="padding-top:8px">
@@ -241,7 +242,7 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
     <!-- Fremdaktenstudium inline -->
     <div class="tmpl" style="border-color:var(--teal-m)">
       <div class="tmpl-head" style="background:var(--teal)">
-        <h3>📄 Fremdaktenstudium</h3>
+        <h2>📄 Fremdaktenstudium</h2>
         <span class="ziffer">EA.05.0100 · LAP-Topf</span>
       </div>
       <div class="tmpl-hint" style="border-left-color:var(--teal-m)">Nur externe Akten (Schulbericht, IV, frühere Klinik, SPD, Behörde). Eigene Verlaufsnotizen nicht abrechenbar.</div>
@@ -263,5 +264,6 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
     <span>TARDOC Kapitel EA.05 · tardoc.netlify.app</span>
   </div>
 </div>
+</main>
 </body>
 </html>

@@ -8,16 +8,16 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --ink:#0d1b2a;--teal:#0a7c71;--teal-l:#e6f4f2;--teal-m:#a7d9d5;
+  --ink:#0d1b2a;--teal:#0a6b61;--teal-l:#e6f4f2;--teal-m:#a7d9d5;
   --blue:#1a4fa3;--blue-l:#eaf0fb;--blue-m:#a3bfe8;
   --amber:#b85c00;--amber-l:#fef3e2;--amber-m:#e8c68a;
   --rose:#c0103a;--rose-l:#fdf0f3;--rose-m:#f0b8c5;
   --green:#1a6b3a;--green-l:#ebf6ef;
-  --mid:#4a5568;--soft:#718096;--line:#dde3eb;--bg:#edf0f4;--paper:#fff;
+  --mid:#4a5568;--soft:#64748b;--line:#dde3eb;--bg:#edf0f4;--paper:#fff;
 }
 body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 16px}
 .printbar{width:210mm;max-width:100%;background:white;border-radius:10px;padding:11px 20px;display:flex;align-items:center;gap:12px;margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
-.printbar-label{flex:1;font-size:12.5px;color:var(--soft)}
+.printbar-label{flex:1;font-size:12.5px;color:#64748b}
 .printbar-label strong{color:var(--ink)}
 .pbtn{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:7px;border:none;font-family:'Source Sans 3',sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;text-decoration:none}
 .pbtn-ghost{background:var(--bg);color:var(--mid);border:1px solid var(--line)}
@@ -59,7 +59,7 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
 .dt-q{background:var(--ink);border-radius:6px;padding:8px 11px;color:white}
 .dt-ql{font-size:6.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#4fd1c5;margin-bottom:1px}
 .dt-qt{font-size:9.5pt;font-weight:600;line-height:1.3}
-.dt-qn{font-size:7pt;color:rgba(255,255,255,.45);margin-top:2px}
+.dt-qn{font-size:7pt;color:rgba(255,255,255,.75);margin-top:2px}
 .dt-down{height:5mm;display:flex;justify-content:center;align-items:center}
 .dt-down::after{content:'';display:block;width:1px;height:100%;background:var(--line)}
 .dt-fork{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
@@ -70,7 +70,7 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
 .dr{border-radius:6px;padding:7px 10px}
 .dr-lbl{font-size:6.5pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}
 .dr p{font-size:9pt;font-weight:600;color:var(--ink);line-height:1.3}
-.dr small{font-size:7.5pt;color:var(--soft);display:block;margin-top:1px}
+.dr small{font-size:7.5pt;color:var(--mid);display:block;margin-top:1px}
 .dr.ri{background:var(--rose-l);border-left:3px solid var(--rose)} .dr.ri .dr-lbl{color:var(--rose)}
 .dr.ra{background:var(--teal-l);border-left:3px solid var(--teal)} .dr.ra .dr-lbl{color:var(--teal)}
 .dr.rl{background:var(--blue-l);border-left:3px solid var(--blue)} .dr.rl .dr-lbl{color:var(--blue)}
@@ -94,11 +94,11 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
 .lim.t{background:var(--teal-l);border:1.5px solid var(--teal-m)}
 .lim.b{background:var(--blue-l);border:1.5px solid var(--blue-m)}
 .lim.a{background:var(--amber-l);border:1.5px solid var(--amber-m)}
-.lim-txt h4{font-size:9.5pt;font-weight:700;color:var(--ink);margin-bottom:1px}
-.lim-txt p{font-size:7.5pt;color:var(--soft);line-height:1.45}
+.lim-txt h3{font-size:9.5pt;font-weight:700;color:var(--ink);margin-bottom:1px}
+.lim-txt p{font-size:7.5pt;color:var(--mid);line-height:1.45}
 .lim-n{font-family:'Playfair Display',serif;font-size:20pt;line-height:1;text-align:right;white-space:nowrap}
-.lim-n span{font-family:'Source Sans 3',sans-serif;font-size:7.5pt;font-weight:400;display:block;color:var(--soft)}
-.lim.t .lim-n{color:var(--teal)} .lim.b .lim-n{color:var(--blue)} .lim.a .lim-n{color:var(--amber)}
+.lim-n span{font-family:'Source Sans 3',sans-serif;font-size:7.5pt;font-weight:400;display:block;color:var(--mid)}
+.lim.t .lim-n{color:#0a6b61} .lim.b .lim-n{color:#1a4fa3} .lim.a .lim-n{color:#92400e}
 
 /* callout */
 .co{border-radius:6px;padding:5px 9px;font-size:8pt;line-height:1.4;display:flex;gap:6px}
@@ -110,7 +110,7 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
 .nl{display:flex;flex-direction:column;gap:2.5mm}
 .ni{display:flex;gap:8px;align-items:flex-start}
 .nn{width:20px;height:20px;border-radius:50%;background:var(--teal);color:white;font-size:8.5pt;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.nt h4{font-size:9pt;font-weight:700;color:var(--ink)}
+.nt h3{font-size:9pt;font-weight:700;color:var(--ink)}
 .nt p{font-size:7.5pt;color:var(--soft);line-height:1.3}
 
 /* ziffer map */
@@ -123,7 +123,7 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
 
 /* warning */
 .wb{background:var(--amber-l);border:1.5px solid var(--amber-m);border-radius:7px;padding:7px 11px}
-.wb h4{font-size:8.5pt;font-weight:700;color:var(--amber);margin-bottom:2px}
+.wb h3{font-size:8.5pt;font-weight:700;color:#92400e;margin-bottom:2px}
 .wb p{font-size:8pt;color:#6b3700;line-height:1.4}
 
 /* footer */
@@ -141,15 +141,16 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
 </head>
 <body>
 
-<div class="printbar">
+<nav class="printbar" aria-label="Drucknavigation">
   <div class="printbar-label"><strong>Spickzettel</strong> · 1 Seite A4 · Tarif-Kompass 2026</div>
   <a class="pbtn pbtn-ghost" href="../index.html">← Zurück</a>
   <button class="pbtn pbtn-dark" onclick="window.print()">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
     Als PDF drucken
   </button>
-</div>
+</nav>
 
+<main>
 <div class="sheet">
   <div class="mast">
     <div class="mast-top">
@@ -228,10 +229,10 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
         <div>
           <div class="sec"><div class="sec-bar t"></div><h2>Netzwerk: 4 Prüffragen</h2><div class="sec-rule"></div></div>
           <div class="nl">
-            <div class="ni"><div class="nn">1</div><div class="nt"><h4>Fachlicher Inhalt oder reine Organisation?</h4><p>Terminvereinbarungen nicht abrechenbar</p></div></div>
-            <div class="ni"><div class="nn">2</div><div class="nt"><h4>Patient nicht anwesend?</h4><p>Wenn ja → LAP; wenn nein → Anwesenheitsleistung</p></div></div>
-            <div class="ni"><div class="nn">3</div><div class="nt"><h4>Externer Kontakt?</h4><p>Intern = nicht abrechenbar</p></div></div>
-            <div class="ni"><div class="nn">4</div><div class="nt"><h4>Noch Budget im 240-Min-Topf?</h4><p>Regelmässig prüfen!</p></div></div>
+            <div class="ni"><div class="nn">1</div><div class="nt"><h3>Fachlicher Inhalt oder reine Organisation?</h3><p>Terminvereinbarungen nicht abrechenbar</p></div></div>
+            <div class="ni"><div class="nn">2</div><div class="nt"><h3>Patient nicht anwesend?</h3><p>Wenn ja → LAP; wenn nein → Anwesenheitsleistung</p></div></div>
+            <div class="ni"><div class="nn">3</div><div class="nt"><h3>Externer Kontakt?</h3><p>Intern = nicht abrechenbar</p></div></div>
+            <div class="ni"><div class="nn">4</div><div class="nt"><h3>Noch Budget im 240-Min-Topf?</h3><p>Regelmässig prüfen!</p></div></div>
           </div>
           <div style="height:3mm"></div>
           <div class="zm">
@@ -262,23 +263,23 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
           <div class="sec"><div class="sec-bar a"></div><h2>Mengengrenzen</h2><div class="sec-rule"></div></div>
           <div style="display:flex;flex-direction:column;gap:3mm">
             <div class="lim t">
-              <div class="lim-txt"><h4>4-Stunden-Regel</h4><p>Ø über 90 Tage · pro Patient<br>exkl. Wegzeit</p></div>
+              <div class="lim-txt"><h3>4-Stunden-Regel</h3><p>Ø über 90 Tage · pro Patient<br>exkl. Wegzeit</p></div>
               <div class="lim-n">4h<span>/ Woche</span></div>
             </div>
             <div class="co a"><span>⚡</span><span>Krise: darf überschritten werden — mit klarer Begründung im Verlauf!</span></div>
             <div class="lim b">
-              <div class="lim-txt"><h4>LAP-Topf</h4><p>Alle EA.05.0100–0150 zusammen<br>kein Kinder-Zuschlag kumulierbar</p></div>
+              <div class="lim-txt"><h3>LAP-Topf</h3><p>Alle EA.05.0100–0150 zusammen<br>kein Kinder-Zuschlag kumulierbar</p></div>
               <div class="lim-n">240'<span>/ 90 Tage</span></div>
             </div>
             <div class="lim a">
-              <div class="lim-txt"><h4>Wegzeit EA.05.0060</h4><p>Hin + zurück · effektiv<br>nicht Teil der 4h-Regel</p></div>
+              <div class="lim-txt"><h3>Wegzeit EA.05.0060</h3><p>Hin + zurück · effektiv<br>nicht Teil der 4h-Regel</p></div>
               <div class="lim-n">60'<span>max.</span></div>
             </div>
           </div>
         </div>
 
         <div class="wb">
-          <h4>⚠ PE010 gilt für Soziale Arbeit nicht</h4>
+          <h3>⚠ PE010 gilt für Soziale Arbeit nicht</h3>
           <p>Vor-/Nachbereitung ist in 0010/0030/0050 inkludiert. Keine zusätzliche 15-Min-Ziffer verwenden.</p>
         </div>
       </div>
@@ -291,5 +292,6 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
     <span>TARDOC Kapitel EA.05 · tardoc.netlify.app</span>
   </div>
 </div>
+</main>
 </body>
 </html>

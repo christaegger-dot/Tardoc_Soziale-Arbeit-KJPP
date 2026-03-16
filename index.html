@@ -9,9 +9,9 @@
   :root {
     --navy: #0f1f38;
     --navy-mid: #1a3354;
-    --teal: #0d9488;
+    --teal: #0a6b61;
     --teal-light: #14b8a6;
-    --amber: #d97706;
+    --amber: #92400e;
     --amber-light: #fbbf24;
     --rose: #e11d48;
     --rose-soft: #fff1f2;
@@ -176,7 +176,7 @@
   }
   .rule-card.amber .rule-icon { background: #fffbeb; }
   .rule-card.rose .rule-icon { background: #fff1f2; }
-  .rule-card h4 {
+  .rule-card h3 {
     font-weight: 600; font-size: 14px;
     margin-bottom: 4px; color: var(--navy);
   }
@@ -285,7 +285,7 @@
   .pos-code {
     font-family: 'DM Sans', sans-serif;
     font-size: 12px; font-weight: 700;
-    color: var(--teal); background: #f0fdfa;
+    color: #0a6b61; background: #f0fdfa;
     padding: 4px 8px; border-radius: 6px;
     display: inline-block; white-space: nowrap;
   }
@@ -295,10 +295,10 @@
     font-size: 11px; font-weight: 600;
     padding: 3px 10px; border-radius: 20px; white-space: nowrap;
   }
-  .badge-anw { background: #dcfce7; color: #16a34a; }
+  .badge-anw { background: #dcfce7; color: #166534; }
   .badge-abw { background: #dbeafe; color: #1d4ed8; }
   .badge-weg { background: #fef3c7; color: #b45309; }
-  .badge-kris { background: #fee2e2; color: #dc2626; }
+  .badge-kris { background: #fee2e2; color: #991b1b; }
 
   /* ── FLOWCHART ── */
   .flow-chart { display: flex; flex-direction: column; gap: 0; align-items: center; }
@@ -333,8 +333,8 @@
   .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .do-box { background: var(--green-bg); border: 1px solid #a7f3d0; border-radius: 10px; padding: 20px; }
   .dont-box { background: var(--red-bg); border: 1px solid #fecdd3; border-radius: 10px; padding: 20px; }
-  .do-box h4 { color: var(--green); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
-  .dont-box h4 { color: var(--rose); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+  .do-box h3 { color: #065f46; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+  .dont-box h3 { color: #9f1239; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
   .do-box ul, .dont-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
   .do-box li, .dont-box li { font-size: 13.5px; display: flex; gap: 8px; align-items: flex-start; }
   .do-box li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
@@ -388,7 +388,7 @@
     display: inline-flex; align-items: center; gap: 8px;
     background: #f0fdfa; border: 1px solid #99f6e4;
     border-radius: 20px; padding: 5px 14px;
-    font-size: 12.5px; font-weight: 600; color: var(--teal);
+    font-size: 12.5px; font-weight: 600; color: #0a6b61;
   }
 
   /* ── CHEAT SHEET ── */
@@ -421,7 +421,7 @@
     padding: 24px 24px 40px;
     border-top: 1px solid var(--border);
     display: flex; justify-content: space-between;
-    font-size: 12px; color: var(--slate-light);
+    font-size: 12px; color: #64748b;
     flex-wrap: wrap; gap: 8px;
   }
 
@@ -447,21 +447,21 @@
     font-size: 11px; font-weight: 700; letter-spacing: .1em;
     text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 8px;
   }
-  .idt-branch-label.y { background: #dcfce7; color: #16a34a; }
-  .idt-branch-label.n { background: #fee2e2; color: #dc2626; }
+  .idt-branch-label.y { background: #dcfce7; color: #166534; }
+  .idt-branch-label.n { background: #fee2e2; color: #991b1b; }
   .idt-res {
     border-radius: 10px; padding: 14px 16px;
     text-align: center; width: 100%; font-size: 13px;
   }
   .idt-res small { display: block; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px; }
   .idt-res.teal { background: #f0fdfa; border: 1.5px solid var(--teal); color: var(--navy); }
-  .idt-res.teal small { color: var(--teal); }
+  .idt-res.teal small { color: #0a6b61; }
   .idt-res.blue { background: #eff6ff; border: 1.5px solid #60a5fa; color: var(--navy); }
   .idt-res.blue small { color: #1d4ed8; }
   .idt-res.amber { background: #fffbeb; border: 1.5px solid var(--amber); color: var(--navy); }
-  .idt-res.amber small { color: var(--amber); }
+  .idt-res.amber small { color: #92400e; }
   .idt-res.rose { background: #fff1f2; border: 1.5px solid var(--rose); color: var(--navy); }
-  .idt-res.rose small { color: var(--rose); }
+  .idt-res.rose small { color: #9f1239; }
   .idt-line { width: 1px; height: 20px; background: var(--border); }
   .idt-sub-fork { display: flex; gap: 16px; width: 100%; }
   .idt-sub-branch { flex: 1; display: flex; flex-direction: column; align-items: center; }
@@ -495,7 +495,7 @@
   }
   .dl-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.22); }
   .dl-btn.primary { background: var(--navy); color: white; }
-  .dl-btn.secondary { background: var(--teal); color: white; }
+  .dl-btn.secondary { background: #0a6b61; color: white; }
   .dl-btn svg { flex-shrink: 0; }
 
   /* ── PRINT STYLES ── */
@@ -528,7 +528,7 @@
 <body>
 
 <!-- DOWNLOAD BAR -->
-<div class="dl-bar">
+<nav class="dl-bar" aria-label="Druckseiten">
   <a class="dl-btn" style="background:#475569;color:white;" href="files/spickzettel-print.html" target="_blank">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
     🗒 Spickzettel
@@ -541,14 +541,10 @@
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
     ✍️ Verlaufseintrag
   </a>
-  <button class="dl-btn primary" onclick="window.print()">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>
-    Seite drucken
-  </button>
-</div>
+</nav>
 
 <!-- HEADER -->
-<div class="header">
+<header class="header">
   <div class="header-inner">
     <span class="header-badge">TARDOC · EA.05 · ab 01.01.2026</span>
     <h1>Tarif-Kompass <span>2026</span></h1>
@@ -568,7 +564,7 @@
       </div>
     </div>
   </div>
-</div>
+</header>
 
 <!-- NAV -->
 <nav class="nav-bar">
@@ -584,49 +580,49 @@
   </div>
 </nav>
 
-<div class="main">
+<main class="main" id="main-content">
 
   <!-- ─── GRUNDREGELN ─── -->
   <section class="section" id="grundregeln">
-    <div class="section-title">
+    <h2 class="section-title">
       <span class="num">1</span>
       Die 5 Grundregeln
-    </div>
+    </h2>
     <p class="section-lead">Was immer gilt — unabhängig von der Situation.</p>
 
     <div class="rule-cards">
       <div class="rule-card">
         <div class="rule-icon">📋</div>
         <div>
-          <h4>Jede Fachperson rechnet eigene Leistungen ab</h4>
+          <h3>Jede Fachperson rechnet eigene Leistungen ab</h3>
           <p>Leistungen werden tagesgenau erfasst. Jede Leistung braucht einen passenden Verlaufseintrag. Nicht delegieren, nicht zusammenfassen.</p>
         </div>
       </div>
       <div class="rule-card">
         <div class="rule-icon">✍️</div>
         <div>
-          <h4>Nicht dokumentiert = tariflich schlecht abgesichert</h4>
+          <h3>Nicht dokumentiert = tariflich schlecht abgesichert</h3>
           <p>Der Verlaufseintrag ist Ihr Nachweis gegenüber dem Kostenträger. Besonders bei Krisen, langer Netzwerkarbeit und allen Grenzfällen.</p>
         </div>
       </div>
       <div class="rule-card amber">
         <div class="rule-icon">⚖️</div>
         <div>
-          <h4>Anwesenheit ≠ Abwesenheit — strikt trennen</h4>
+          <h3>Anwesenheit ≠ Abwesenheit — strikt trennen</h3>
           <p>Gespräch mit Patient/Familie (Anwesenheitsleistung) ist tariflich ein anderer Mechanismus als Telefonat mit Beistand ohne den Patienten (LAP-Topf).</p>
         </div>
       </div>
       <div class="rule-card amber">
         <div class="rule-icon">🚗</div>
         <div>
-          <h4>Wegzeit ist ein eigener Bereich</h4>
+          <h3>Wegzeit ist ein eigener Bereich</h3>
           <p>Wegzeit ist abrechenbar, aber kein Teil des Gesprächs. Max. 60 Minuten pro Sitzung. Zählt nicht zur 4-Stunden-Regel.</p>
         </div>
       </div>
       <div class="rule-card rose">
         <div class="rule-icon">🚫</div>
         <div>
-          <h4>Interne Arbeit bleibt intern</h4>
+          <h3>Interne Arbeit bleibt intern</h3>
           <p>Supervision, Intervision, interne Rapporte, Terminvereinbarungen und Leistungserfassung am PC sind keine verrechenbaren Patientenleistungen.</p>
         </div>
       </div>
@@ -635,10 +631,10 @@
 
   <!-- ─── LIMITS ─── -->
   <section class="section" id="limits">
-    <div class="section-title">
+    <h2 class="section-title">
       <span class="num">2</span>
       Die zentralen Mengengrenzen
-    </div>
+    </h2>
     <p class="section-lead">Zwei Budgets, die parallel laufen — beide müssen im Blick behalten werden.</p>
 
     <div class="card-grid card-grid-2">
@@ -684,10 +680,10 @@
 
   <!-- ─── ENTSCHEIDUNGSBAUM ─── -->
   <section class="section" id="entscheidung">
-    <div class="section-title">
+    <h2 class="section-title">
       <span class="num">3</span>
       Entscheidungsbaum: Was ist abrechenbar?
-    </div>
+    </h2>
     <p class="section-lead">Drei Fragen entscheiden, wohin eine Leistung gehört.</p>
 
     <div class="idt">
@@ -810,10 +806,10 @@
 
   <!-- ─── POSITIONEN ─── -->
   <section class="section" id="positionen">
-    <div class="section-title">
+    <h2 class="section-title">
       <span class="num">4</span>
       Alle relevanten EA.05-Positionen
-    </div>
+    </h2>
     <p class="section-lead">Überblick über die für Soziale Arbeit KJPP-Tagesklinik relevanten Tarifziffern.</p>
 
     <div class="pos-grid">
@@ -922,10 +918,10 @@
 
   <!-- ─── LAP-TOPF ─── -->
   <section class="section" id="lap-topf">
-    <div class="section-title">
+    <h2 class="section-title">
       <span class="num">5</span>
       Der LAP-Topf im Detail
-    </div>
+    </h2>
     <p class="section-lead">240 Minuten pro 90 Tage und Patient — für alle Abwesenheitsleistungen zusammen.</p>
 
     <!-- Budget visual -->
@@ -972,7 +968,7 @@
 
     <div class="do-dont">
       <div class="do-box">
-        <h4><span>✓</span> Abrechenbar aus LAP-Topf</h4>
+        <h3><span>✓</span> Abrechenbar aus LAP-Topf</h3>
         <ul>
           <li>Externer Schulbericht lesen und beurteilen</li>
           <li>IV-Unterlagen studieren</li>
@@ -985,7 +981,7 @@
         </ul>
       </div>
       <div class="dont-box">
-        <h4><span>✕</span> Nicht aus LAP-Topf</h4>
+        <h3><span>✕</span> Nicht aus LAP-Topf</h3>
         <ul>
           <li>Eigene bisherige Verlaufsnotizen nachlesen</li>
           <li>Kurze Vor-/Nachbereitung direkt um Sitzung</li>
@@ -1002,10 +998,10 @@
 
   <!-- ─── NETZWERKARBEIT ─── -->
   <section class="section" id="netzwerk">
-    <div class="section-title">
+    <h2 class="section-title">
       <span class="num">6</span>
       Netzwerkarbeit: 4 Prüffragen
-    </div>
+    </h2>
     <p class="section-lead">Vor jedem Netzwerkkontakt kurz durchdenken — dann sinkt die Fehlerquote deutlich.</p>
 
     <div class="card" style="padding:28px">
@@ -1071,10 +1067,10 @@
 
   <!-- ─── SZENARIEN ─── -->
   <section class="section" id="szenarien">
-    <div class="section-title">
+    <h2 class="section-title">
       <span class="num">7</span>
       Alltagsszenarien
-    </div>
+    </h2>
     <p class="section-lead">Typische Situationen aus dem Tagesklinikalltag — so würde man denken.</p>
 
     <div class="scenario-grid">
@@ -1093,7 +1089,7 @@
         <div class="scenario-body">
           <div class="scenario-q">📋 5 Min eigenen letzten Verlauf lesen direkt vor Termin</div>
           <div class="scenario-think">Unmittelbare Vorbereitung → in EA.05.0010/0030 inkludiert</div>
-          <span class="scenario-answer" style="background:#fff1f2;border-color:#fecdd3;color:#e11d48">✕ Nicht separat abrechenbar</span>
+          <span class="scenario-answer" style="background:#fff1f2;border-color:#fecdd3;color:#9f1239">✕ Nicht separat abrechenbar</span>
         </div>
       </div>
 
@@ -1138,7 +1134,7 @@
         <div class="scenario-body">
           <div class="scenario-q">🔄 Intervision im Team über komplexen Fall</div>
           <div class="scenario-think">Intern · Kein direkter Patientenkontakt · Keine externe Netzwerkarbeit</div>
-          <span class="scenario-answer" style="background:#fff1f2;border-color:#fecdd3;color:#e11d48">✕ Nicht verrechenbar (intern)</span>
+          <span class="scenario-answer" style="background:#fff1f2;border-color:#fecdd3;color:#9f1239">✕ Nicht verrechenbar (intern)</span>
         </div>
       </div>
 
@@ -1147,7 +1143,7 @@
         <div class="scenario-body">
           <div class="scenario-q">⚡ Jugendlicher kommt unangemeldet in Krise (akut selbstverletzend, überwältigt)</div>
           <div class="scenario-think">Unvorhersehbar · Bedrohend · Ohne professionelle Hilfe nicht bewältigbar → Krisendefinition erfüllt. Dokumentation: Auslöser, Bedrohung, Massnahmen!</div>
-          <span class="scenario-answer" style="background:#fff1f2;border-color:#fca5a5;color:#dc2626">→ EA.05.0050 Krisenintervention</span>
+          <span class="scenario-answer" style="background:#fff1f2;border-color:#fca5a5;color:#991b1b">→ EA.05.0050 Krisenintervention</span>
         </div>
       </div>
 
@@ -1156,10 +1152,10 @@
 
   <!-- ─── VERLAUFSEINTRAG ─── -->
   <section class="section" id="verlauf">
-    <div class="section-title">
+    <h2 class="section-title">
       <span class="num">8</span>
       Sauberer Verlaufseintrag
-    </div>
+    </h2>
     <p class="section-lead">Kurz — aber tariflich nachvollziehbar. Das ist das Ziel.</p>
 
     <div class="card-grid card-grid-2">
@@ -1218,10 +1214,10 @@
 
   <!-- ─── KURZFASSUNG ─── -->
   <section class="section" id="kurzfassung">
-    <div class="section-title">
+    <h2 class="section-title">
       <span class="num">9</span>
       Kurzfassung für den Alltag
-    </div>
+    </h2>
     <p class="section-lead">Die 7 wichtigsten Dinge — wenn es schnell gehen muss.</p>
 
     <div class="cheat-sheet">
