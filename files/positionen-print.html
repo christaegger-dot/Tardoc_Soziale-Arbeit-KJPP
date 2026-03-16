@@ -35,16 +35,20 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
 .mast-meta strong{color:#5eadb3;font-size:9pt;display:block;margin-bottom:2px}
 
 /* body */
-.body{flex:1;padding:8mm 14mm 8mm;display:flex;flex-direction:column;gap:7mm}
+.body{flex:1;padding:8mm 14mm 8mm;display:flex;flex-direction:column;gap:5mm}
 
 /* category header */
 .cat{display:flex;align-items:center;gap:10px;margin-bottom:3mm}
 .cat-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.cat-dot.t{background:var(--teal)} .cat-dot.b{background:var(--blue)}
+.cat-dot.t{background:var(--teal)} .cat-dot.b{background:var(--amber)}
 .cat-dot.a{background:var(--amber)} .cat-dot.r{background:var(--rose)}
 .cat h2{font-size:9pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
 .cat-rule{flex:1;height:1px;background:var(--line)}
-.cat-note{font-size:7.5pt;color:var(--soft);white-space:nowrap}
+.cat-note{font-size:7.5pt;color:var(--mid);white-space:nowrap}
+
+/* regime blocks */
+.regime-anw{background:var(--paper);border-radius:8px;padding:0 0 2mm}
+.regime-lap{background:var(--amber-l);border-radius:8px;padding:3mm 4mm 2mm;border:1px solid var(--amber-m)}
 
 /* position rows */
 .pos-list{display:flex;flex-direction:column;gap:0}
@@ -152,7 +156,7 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
   <div class="body">
 
     <!-- ANWESENHEIT -->
-    <div>
+    <div class="regime-anw">
       <div class="cat">
         <div class="cat-dot t"></div>
         <h2>Anwesenheitsleistungen</h2>
@@ -201,7 +205,7 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
     </div>
 
     <!-- LAP -->
-    <div>
+    <div class="regime-lap">
       <div class="cat">
         <div class="cat-dot b"></div>
         <h2>LAP-Topf · Leistungen in Abwesenheit</h2>
