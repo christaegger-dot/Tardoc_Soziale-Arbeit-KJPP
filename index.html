@@ -33,6 +33,7 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { overflow-x: hidden; }
 
   body {
     font-family: 'DM Sans', sans-serif;
@@ -40,6 +41,7 @@
     color: var(--text);
     font-size: 15px;
     line-height: 1.65;
+    overflow-x: hidden;
   }
 
   /* ── HEADER ── */
@@ -111,12 +113,16 @@
     border-bottom: 1px solid var(--border);
     position: sticky; top: 0; z-index: 100;
     box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    overflow: hidden;
   }
   .nav-inner {
     max-width: 900px; margin: 0 auto;
     padding: 0 24px;
     display: flex; gap: 2px; overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
+  .nav-inner::-webkit-scrollbar { display: none; }
   .nav-link {
     display: block; padding: 14px 14px;
     font-size: 12.5px; font-weight: 500;
