@@ -11,24 +11,24 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #0f1f38;
-    --navy-mid: #1a3354;
-    --teal: #0a6b61;
-    --teal-light: #14b8a6;
-    --amber: #92400e;
-    --amber-light: #fbbf24;
-    --rose: #e11d48;
-    --rose-soft: #fff1f2;
+    --navy: #1c2b3a;
+    --navy-mid: #243447;
+    --teal: #1E656D;
+    --teal-light: #8dd4d9;
+    --amber: #B45309;
+    --amber-light: #F59E0B;
+    --rose: #B45309;
+    --rose-soft: #fef3c7;
     --slate: #475569;
     --slate-light: #94a3b8;
-    --bg: #f8fafc;
+    --bg: #FAFAF7;
     --card: #ffffff;
     --border: #e2e8f0;
     --text: #1e293b;
-    --text-soft: #64748b;
-    --green: #059669;
-    --green-bg: #ecfdf5;
-    --red-bg: #fff1f2;
+    --text-soft: #78716C;
+    --green: #0d7a5f;
+    --green-bg: #f0fdf4;
+    --red-bg: #fef3c7;
     --amber-bg: #fffbeb;
   }
 
@@ -58,7 +58,7 @@
     top: -60px; right: -60px;
     width: 300px; height: 300px;
     border-radius: 50%;
-    background: rgba(13,148,136,0.15);
+    background: rgba(30,101,109,0.15);
   }
   .header::after {
     content: '';
@@ -66,7 +66,7 @@
     bottom: -40px; left: 30%;
     width: 200px; height: 200px;
     border-radius: 50%;
-    background: rgba(217,119,6,0.10);
+    background: rgba(180,83,9,0.10);
   }
   .header-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
   .header-badge {
@@ -185,7 +185,7 @@
     background: #f0fdfa;
   }
   .rule-card.amber .rule-icon { background: #fffbeb; }
-  .rule-card.rose .rule-icon { background: #fff1f2; }
+  .rule-card.rose .rule-icon { background: #fef3c7; }
   .rule-card h3 {
     font-weight: 600; font-size: 14px;
     margin-bottom: 4px; color: var(--navy);
@@ -265,15 +265,15 @@
     text-transform: uppercase; letter-spacing: .08em;
     padding: 2px 10px; border-radius: 20px;
   }
-  .yes { background: #dcfce7; color: #16a34a; }
-  .no  { background: #fee2e2; color: #dc2626; }
+  .yes { background: #dcfce7; color: #15803d; }
+  .no  { background: #fee2e2; color: #B45309; }
   .dt-result {
     border-radius: 10px; padding: 14px 18px;
     font-size: 13.5px;
   }
   .dt-result.teal { background: #f0fdfa; border: 1.5px solid var(--teal); }
   .dt-result.amber { background: #fffbeb; border: 1.5px solid var(--amber); }
-  .dt-result.rose { background: #fff1f2; border: 1.5px solid var(--rose); }
+  .dt-result.rose { background: #fef3c7; border: 1.5px solid var(--rose); }
   .dt-result .res-label {
     font-size: 10px; font-weight: 700; letter-spacing: .1em;
     text-transform: uppercase; margin-bottom: 4px; display: block;
@@ -295,7 +295,7 @@
   .pos-code {
     font-family: 'DM Sans', sans-serif;
     font-size: 12px; font-weight: 700;
-    color: #0a6b61; background: #f0fdfa;
+    color: #1E656D; background: #f0fdfa;
     padding: 4px 8px; border-radius: 6px;
     display: inline-block; white-space: nowrap;
   }
@@ -305,10 +305,10 @@
     font-size: 11px; font-weight: 600;
     padding: 3px 10px; border-radius: 20px; white-space: nowrap;
   }
-  .badge-anw { background: #dcfce7; color: #166534; }
-  .badge-abw { background: #dbeafe; color: #1d4ed8; }
-  .badge-weg { background: #fef3c7; color: #b45309; }
-  .badge-kris { background: #fee2e2; color: #991b1b; }
+  .badge-anw { background: #dcfce7; color: #14532d; }
+  .badge-abw { background: #dbeafe; color: #1E656D; }
+  .badge-weg { background: #fef3c7; color: #B45309; }
+  .badge-kris { background: #fee2e2; color: #7c2d12; }
 
   /* ── FLOWCHART ── */
   .flow-chart { display: flex; flex-direction: column; gap: 0; align-items: center; }
@@ -323,7 +323,7 @@
   }
   .flow-box.q { background: var(--navy); color: white; }
   .flow-box.a-yes { background: #f0fdfa; border: 1.5px solid var(--teal); color: var(--teal); }
-  .flow-box.a-no { background: #fff1f2; border: 1.5px solid var(--rose); color: var(--rose); }
+  .flow-box.a-no { background: #fef3c7; border: 1.5px solid var(--rose); color: var(--rose); }
   .flow-arrow {
     display: flex; justify-content: center; align-items: center;
     height: 32px; color: var(--slate-light); font-size: 18px;
@@ -336,19 +336,19 @@
     letter-spacing: .08em; text-transform: uppercase;
     margin-bottom: 6px;
   }
-  .flow-side-label.yes-l { color: #16a34a; }
-  .flow-side-label.no-l { color: #dc2626; }
+  .flow-side-label.yes-l { color: #15803d; }
+  .flow-side-label.no-l { color: #B45309; }
 
   /* ── DO/DONT ── */
   .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .do-box { background: var(--green-bg); border: 1px solid #a7f3d0; border-radius: 10px; padding: 20px; }
-  .dont-box { background: var(--red-bg); border: 1px solid #fecdd3; border-radius: 10px; padding: 20px; }
+  .do-box { background: var(--green-bg); border: 1px solid #6ee7b7; border-radius: 10px; padding: 20px; }
+  .dont-box { background: var(--red-bg); border: 1px solid #fde68a; border-radius: 10px; padding: 20px; }
   .do-box h3 { color: #065f46; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
-  .dont-box h3 { color: #9f1239; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+  .dont-box h3 { color: #7c2d12; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
   .do-box ul, .dont-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
   .do-box li, .dont-box li { font-size: 13.5px; display: flex; gap: 8px; align-items: flex-start; }
   .do-box li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-  .dont-box li::before { content: '✕'; color: var(--rose); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .dont-box li::before { content: '✕'; color: var(--amber); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
   /* ── LIMIT BAR ── */
   .limit-box {
@@ -373,7 +373,7 @@
   .limit-exception {
     margin-top: 14px; padding: 12px 16px;
     background: var(--amber-bg); border: 1px solid #fcd34d;
-    border-radius: 8px; font-size: 13px; color: #92400e;
+    border-radius: 8px; font-size: 13px; color: #B45309;
     display: flex; gap: 10px; align-items: flex-start;
   }
 
@@ -398,7 +398,7 @@
     display: inline-flex; align-items: center; gap: 8px;
     background: #f0fdfa; border: 1px solid #99f6e4;
     border-radius: 20px; padding: 5px 14px;
-    font-size: 12.5px; font-weight: 600; color: #0a6b61;
+    font-size: 12.5px; font-weight: 600; color: #1E656D;
   }
 
   /* ── CHEAT SHEET ── */
@@ -431,7 +431,7 @@
     padding: 24px 24px 40px;
     border-top: 1px solid var(--border);
     display: flex; justify-content: space-between;
-    font-size: 12px; color: #64748b;
+    font-size: 12px; color: #78716C;
     flex-wrap: wrap; gap: 8px;
   }
 
@@ -457,21 +457,21 @@
     font-size: 11px; font-weight: 700; letter-spacing: .1em;
     text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 8px;
   }
-  .idt-branch-label.y { background: #dcfce7; color: #166534; }
-  .idt-branch-label.n { background: #fee2e2; color: #991b1b; }
+  .idt-branch-label.y { background: #dcfce7; color: #14532d; }
+  .idt-branch-label.n { background: #fee2e2; color: #7c2d12; }
   .idt-res {
     border-radius: 10px; padding: 14px 16px;
     text-align: center; width: 100%; font-size: 13px;
   }
   .idt-res small { display: block; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px; }
   .idt-res.teal { background: #f0fdfa; border: 1.5px solid var(--teal); color: var(--navy); }
-  .idt-res.teal small { color: #0a6b61; }
-  .idt-res.blue { background: #eff6ff; border: 1.5px solid #60a5fa; color: var(--navy); }
-  .idt-res.blue small { color: #1d4ed8; }
+  .idt-res.teal small { color: #1E656D; }
+  .idt-res.blue { background: #f0fdfa; border: 1.5px solid #5eadb3; color: var(--navy); }
+  .idt-res.blue small { color: #1E656D; }
   .idt-res.amber { background: #fffbeb; border: 1.5px solid var(--amber); color: var(--navy); }
-  .idt-res.amber small { color: #92400e; }
-  .idt-res.rose { background: #fff1f2; border: 1.5px solid var(--rose); color: var(--navy); }
-  .idt-res.rose small { color: #9f1239; }
+  .idt-res.amber small { color: #B45309; }
+  .idt-res.rose { background: #fef3c7; border: 1.5px solid var(--rose); color: var(--navy); }
+  .idt-res.rose small { color: #7c2d12; }
   .idt-line { width: 1px; height: 20px; background: var(--border); }
   .idt-sub-fork { display: flex; gap: 16px; width: 100%; }
   .idt-sub-branch { flex: 1; display: flex; flex-direction: column; align-items: center; }
@@ -480,7 +480,7 @@
   .note {
     background: #fffbeb; border: 1px solid #fcd34d;
     border-radius: 8px; padding: 12px 16px;
-    font-size: 13px; color: #78350f;
+    font-size: 13px; color: #92400e;
     display: flex; gap: 10px; align-items: flex-start;
     margin-top: 16px;
   }
@@ -505,7 +505,7 @@
   }
   .dl-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.22); }
   .dl-btn.primary { background: var(--navy); color: white; }
-  .dl-btn.secondary { background: #0a6b61; color: white; }
+  .dl-btn.secondary { background: #1E656D; color: white; }
   .dl-btn svg { flex-shrink: 0; }
 
   /* ── PRINT STYLES ── */
@@ -539,7 +539,7 @@
 
 <!-- DOWNLOAD BAR -->
 <nav class="dl-bar" aria-label="Druckseiten">
-  <a class="dl-btn" style="background:#0a6b61;color:white;" href="files/entscheidungsbaum-print.html" target="_blank">
+  <a class="dl-btn" style="background:#1E656D;color:white;" href="files/entscheidungsbaum-print.html" target="_blank">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
     🌿 Entscheidungsbaum
   </a>
@@ -547,7 +547,7 @@
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
     🗒 Spickzettel
   </a>
-  <a class="dl-btn" style="background:#1d4ed8;color:white;" href="files/positionen-print.html" target="_blank">
+  <a class="dl-btn" style="background:#1E656D;color:white;" href="files/positionen-print.html" target="_blank">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
     📋 Positionen
   </a>
@@ -659,7 +659,7 @@
           <div class="limit-bar-track" style="flex:1">
             <div class="limit-bar-fill" style="width:66.6%" id="bar4h">4h</div>
           </div>
-          <div class="limit-num">240<span style="font-size:14px;font-weight:400;color:#64748b"> Min</span></div>
+          <div class="limit-num">240<span style="font-size:14px;font-weight:400;color:#78716C"> Min</span></div>
         </div>
         <div class="limit-labels">
           <span>0</span><span>90 Tage / 7 Tage / Patient</span>
@@ -676,15 +676,15 @@
         <div class="limit-title">📦 LAP-Topf (Leistungen in Abwesenheit)</div>
         <div class="limit-visual">
           <div class="limit-bar-track" style="flex:1">
-            <div class="limit-bar-fill" style="width:100%; background: linear-gradient(90deg, #1d4ed8, #60a5fa)" id="barLAP">240 Min</div>
+            <div class="limit-bar-fill" style="width:100%; background: linear-gradient(90deg, #1E656D, #5eadb3)" id="barLAP">240 Min</div>
           </div>
-          <div class="limit-num" style="color:#1d4ed8">240<span style="font-size:14px;font-weight:400;color:#64748b"> Min</span></div>
+          <div class="limit-num" style="color:#1E656D">240<span style="font-size:14px;font-weight:400;color:#78716C"> Min</span></div>
         </div>
         <div class="limit-labels">
           <span>0</span><span>pro 90 Tage / Patient</span>
         </div>
         <p class="limit-note"><strong>Gemeinsamer Topf</strong> für alle LAP-Positionen (EA.05.0100–0150). Viele kleine Kontakte summieren sich schnell!</p>
-        <div class="limit-exception" style="background:#eff6ff; border-color:#93c5fd; color:#1e3a8a;">
+        <div class="limit-exception" style="background:#f0fdfa; border-color:#93c5fd; color:#1e3a8a;">
           <span>ℹ️</span>
           <span><strong>Nicht kumulierbar</strong> mit Zuschlag für Kinder unter 12 Jahren.</span>
         </div>
@@ -1021,7 +1021,7 @@
     <div class="card" style="padding:28px">
       <div style="display:grid; gap:14px;">
 
-        <div style="display:flex; gap:16px; align-items:flex-start; padding:16px; background:#f8fafc; border-radius:10px; border:1px solid #e2e8f0">
+        <div style="display:flex; gap:16px; align-items:flex-start; padding:16px; background:#FAFAF7; border-radius:10px; border:1px solid #e2e8f0">
           <div style="width:36px;height:36px;border-radius:50%;background:var(--navy);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0">1</div>
           <div>
             <div style="font-weight:600;font-size:14px;color:var(--navy);margin-bottom:3px">Ist es fachlicher Inhalt — oder reine Organisation?</div>
@@ -1029,7 +1029,7 @@
           </div>
         </div>
 
-        <div style="display:flex; gap:16px; align-items:flex-start; padding:16px; background:#f8fafc; border-radius:10px; border:1px solid #e2e8f0">
+        <div style="display:flex; gap:16px; align-items:flex-start; padding:16px; background:#FAFAF7; border-radius:10px; border:1px solid #e2e8f0">
           <div style="width:36px;height:36px;border-radius:50%;background:var(--navy);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0">2</div>
           <div>
             <div style="font-weight:600;font-size:14px;color:var(--navy);margin-bottom:3px">Ist der Patient nicht anwesend?</div>
@@ -1037,7 +1037,7 @@
           </div>
         </div>
 
-        <div style="display:flex; gap:16px; align-items:flex-start; padding:16px; background:#f8fafc; border-radius:10px; border:1px solid #e2e8f0">
+        <div style="display:flex; gap:16px; align-items:flex-start; padding:16px; background:#FAFAF7; border-radius:10px; border:1px solid #e2e8f0">
           <div style="width:36px;height:36px;border-radius:50%;background:var(--navy);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0">3</div>
           <div>
             <div style="font-weight:600;font-size:14px;color:var(--navy);margin-bottom:3px">Ist es ein externer Kontakt?</div>
@@ -1045,7 +1045,7 @@
           </div>
         </div>
 
-        <div style="display:flex; gap:16px; align-items:flex-start; padding:16px; background:#f8fafc; border-radius:10px; border:1px solid #e2e8f0">
+        <div style="display:flex; gap:16px; align-items:flex-start; padding:16px; background:#FAFAF7; border-radius:10px; border:1px solid #e2e8f0">
           <div style="width:36px;height:36px;border-radius:50%;background:var(--navy);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0">4</div>
           <div>
             <div style="font-weight:600;font-size:14px;color:var(--navy);margin-bottom:3px">Läuft noch Budget im 240-Min-Topf?</div>
@@ -1103,7 +1103,7 @@
         <div class="scenario-body">
           <div class="scenario-q">📋 5 Min eigenen letzten Verlauf lesen direkt vor Termin</div>
           <div class="scenario-think">Unmittelbare Vorbereitung → in EA.05.0010/0030 inkludiert</div>
-          <span class="scenario-answer" style="background:#fff1f2;border-color:#fecdd3;color:#9f1239">✕ Nicht separat abrechenbar</span>
+          <span class="scenario-answer" style="background:#fef3c7;border-color:#fde68a;color:#7c2d12">✕ Nicht separat abrechenbar</span>
         </div>
       </div>
 
@@ -1148,7 +1148,7 @@
         <div class="scenario-body">
           <div class="scenario-q">🔄 Intervision im Team über komplexen Fall</div>
           <div class="scenario-think">Intern · Kein direkter Patientenkontakt · Keine externe Netzwerkarbeit</div>
-          <span class="scenario-answer" style="background:#fff1f2;border-color:#fecdd3;color:#9f1239">✕ Nicht verrechenbar (intern)</span>
+          <span class="scenario-answer" style="background:#fef3c7;border-color:#fde68a;color:#7c2d12">✕ Nicht verrechenbar (intern)</span>
         </div>
       </div>
 
@@ -1157,7 +1157,7 @@
         <div class="scenario-body">
           <div class="scenario-q">⚡ Jugendlicher kommt unangemeldet in Krise (akut selbstverletzend, überwältigt)</div>
           <div class="scenario-think">Unvorhersehbar · Bedrohend · Ohne professionelle Hilfe nicht bewältigbar → Krisendefinition erfüllt. Dokumentation: Auslöser, Bedrohung, Massnahmen!</div>
-          <span class="scenario-answer" style="background:#fff1f2;border-color:#fca5a5;color:#991b1b">→ EA.05.0050 Krisenintervention</span>
+          <span class="scenario-answer" style="background:#fef3c7;border-color:#fca5a5;color:#7c2d12">→ EA.05.0050 Krisenintervention</span>
         </div>
       </div>
 
@@ -1185,12 +1185,12 @@
       </div>
 
       <div class="card">
-        <div style="font-weight:700;font-size:13px;color:#1d4ed8;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">🌐 Netzwerkarbeit (LAP)</div>
+        <div style="font-weight:700;font-size:13px;color:#1E656D;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">🌐 Netzwerkarbeit (LAP)</div>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
-          <li style="font-size:13.5px;display:flex;gap:8px"><span style="color:#1d4ed8">•</span> Mit wem gesprochen?</li>
-          <li style="font-size:13.5px;display:flex;gap:8px"><span style="color:#1d4ed8">•</span> Weshalb fachlich nötig?</li>
-          <li style="font-size:13.5px;display:flex;gap:8px"><span style="color:#1d4ed8">•</span> Kerninhalt des Austauschs</li>
-          <li style="font-size:13.5px;display:flex;gap:8px"><span style="color:#1d4ed8">•</span> Konkrete Folgevereinbarung</li>
+          <li style="font-size:13.5px;display:flex;gap:8px"><span style="color:#1E656D">•</span> Mit wem gesprochen?</li>
+          <li style="font-size:13.5px;display:flex;gap:8px"><span style="color:#1E656D">•</span> Weshalb fachlich nötig?</li>
+          <li style="font-size:13.5px;display:flex;gap:8px"><span style="color:#1E656D">•</span> Kerninhalt des Austauschs</li>
+          <li style="font-size:13.5px;display:flex;gap:8px"><span style="color:#1E656D">•</span> Konkrete Folgevereinbarung</li>
         </ul>
       </div>
 
@@ -1221,7 +1221,7 @@
   <div class="note" style="margin-bottom:40px">
     <span class="note-icon">⚠️</span>
     <div>
-      <strong style="color:#78350f">Wichtig: PE010 gilt für Soziale Arbeit nicht als allgemeine Standardregel</strong><br>
+      <strong style="color:#92400e">Wichtig: PE010 gilt für Soziale Arbeit nicht als allgemeine Standardregel</strong><br>
       <span style="font-size:13px">PE010 (Vor- und Nachbereitung) ist eine Regelung für Psychologen. Für die Soziale Arbeit in der aktuellen KJPP-Übersicht ab 01.01.2026 ist diese Logik <em>nicht</em> als allgemeine Standardregel ausgewiesen. Die direkte kurze Vor-/Nachbereitung ist in EA.05.0010, 0030 und 0050 bereits inkludiert — keine zusätzliche 15-Min-Ziffer anwenden.</span>
     </div>
   </div>
