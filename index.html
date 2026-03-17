@@ -332,6 +332,43 @@
   }
   .bottom-sheet-link.active .bs-num { color: var(--teal); }
 
+  /* Print-Links Trennlinie im Bottom-Sheet */
+  .bottom-sheet-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 8px 20px;
+  }
+  .bottom-sheet-section-label {
+    padding: 8px 20px 4px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--slate);
+  }
+  .bottom-sheet-print-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all .12s;
+  }
+  .bottom-sheet-print-link:hover {
+    background: rgba(30,101,109,0.07);
+    color: var(--teal);
+    border-left-color: var(--teal);
+  }
+  .bottom-sheet-print-link .bs-icon {
+    font-size: 15px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
   /* ── SECTION ── */
   .section { margin-bottom: 52px; scroll-margin-top: 24px; }
   .section-title {
@@ -806,6 +843,8 @@
     .nav-bar { display: block; }
     .page-layout { display: block; }
     .main { padding: 24px 24px 80px; max-width: 100%; }
+    /* dl-bar auf Tablet nach rechts rücken, damit sie nicht den Inhalt überdeckt */
+    .dl-bar { bottom: 16px; right: 16px; }
   }
 
   /* ── MOBILE (≤600px) ── */
@@ -813,6 +852,8 @@
     .nav-bar { display: none; }
     .bottom-nav-btn { display: flex; }
     .main { padding: 20px 16px 100px; }
+    /* Print-Links auf Mobile ausblenden — sie leben im Bottom-Sheet */
+    .dl-bar { display: none !important; }
   }
 
   /* ── PRINT STYLES ── */
@@ -879,7 +920,7 @@
     <p class="header-role-hint">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
       Diese Seite erklärt die Hintergründe und Logik — zum schnellen Nachschlagen im Moment die
-      <a href="files/spickzettel-print.html" target="_blank">vier Kurzblätter</a> oben rechts verwenden.
+      <a href="files/spickzettel-print.html" target="_blank">vier Kurzblätter</a> verwenden.
     </p>
     <div class="header-meta">
       <div class="header-meta-item">
@@ -935,6 +976,20 @@
     <a href="#verlauf" class="bottom-sheet-link"><span class="bs-num">8</span>Verlaufseintrag</a>
     <a href="#kurzfassung" class="bottom-sheet-link"><span class="bs-num">9</span>Kurzfassung</a>
   </nav>
+  <div class="bottom-sheet-divider"></div>
+  <div class="bottom-sheet-section-label">Druckseiten</div>
+  <a class="bottom-sheet-print-link" href="files/entscheidungsbaum-print.html" target="_blank">
+    <span class="bs-icon">🌿</span>Entscheidungsbaum
+  </a>
+  <a class="bottom-sheet-print-link" href="files/spickzettel-print.html" target="_blank">
+    <span class="bs-icon">🗒</span>Spickzettel
+  </a>
+  <a class="bottom-sheet-print-link" href="files/positionen-print.html" target="_blank">
+    <span class="bs-icon">📋</span>Positionen
+  </a>
+  <a class="bottom-sheet-print-link" href="files/verlaufseintrag-print.html" target="_blank">
+    <span class="bs-icon">✍️</span>Verlaufseintrag
+  </a>
 </div>
 
 <div class="page-layout">
