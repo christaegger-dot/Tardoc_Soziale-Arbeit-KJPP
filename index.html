@@ -16,9 +16,9 @@
     --teal: #1E656D;
     --teal-light: #8dd4d9;
     --amber: #B45309;
-    --amber-light: #B45309;
-    --rose: #B45309;
-    --rose-soft: #fef3e2;
+    --amber-light: #FBBF24;
+    --rose: #9A3412;
+    --rose-soft: #FEF2F2;
     --slate: #475569;
     --slate-light: #94a3b8;
     --bg: #FAFAF7;
@@ -28,8 +28,9 @@
     --text-soft: #78716C;
     --green: #0d7a5f;
     --green-bg: #e6f4f2;
-    --red-bg: #fef3e2;
+    --red-bg: #FEF2F2;
     --amber-bg: #fef3e2;
+    --amber-dark: #92400e;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -422,7 +423,7 @@
     background: #e6f4f2;
   }
   .rule-card.amber .rule-icon { background: #fef3e2; }
-  .rule-card.rose .rule-icon { background: #fef3e2; }
+  .rule-card.rose .rule-icon { background: var(--rose-soft); }
   .rule-icon svg { width: 18px; height: 18px; }
   .rule-card h3 {
     font-weight: 600; font-size: 14px;
@@ -441,6 +442,7 @@
   .budget-bar-wrap { background: rgba(255,255,255,0.12); border-radius: 8px; height: 14px; margin-bottom: 8px; overflow: hidden; }
   .budget-bar { height: 100%; border-radius: 8px; background: var(--teal); transition: width 1s ease; }
   .budget-labels { display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 24px; }
+  .limit-labels { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-soft); margin-bottom: 24px; }
   .budget-items { display: grid; gap: 10px; }
   .budget-item {
     display: flex; justify-content: space-between; align-items: center;
@@ -504,7 +506,7 @@
   }
   .dt-result.teal { background: #e6f4f2; border: 1.5px solid var(--teal); }
   .dt-result.amber { background: #fef3e2; border: 1.5px solid var(--amber); }
-  .dt-result.rose { background: #fef3e2; border: 1.5px solid var(--rose); }
+  .dt-result.rose { background: var(--rose-soft); border: 1.5px solid var(--rose); }
   .dt-result .res-label {
     font-size: 10px; font-weight: 700; letter-spacing: .1em;
     text-transform: uppercase; margin-bottom: 4px; display: block;
@@ -539,7 +541,7 @@
   .badge-anw { background: #e6f4f2; color: #0d7a5f; }
   .badge-abw { background: #e6f4f2; color: #1E656D; }
   .badge-weg { background: #fef3e2; color: #B45309; }
-  .badge-kris { background: #fef3e2; color: #92400e; }
+  .badge-kris { background: #fef3e2; color: var(--amber-dark); }
 
   /* ── FLOWCHART ── */
   .flow-chart { display: flex; flex-direction: column; gap: 0; align-items: center; }
@@ -551,7 +553,7 @@
   }
   .flow-box.q { background: var(--navy); color: white; }
   .flow-box.a-yes { background: #e6f4f2; border: 1.5px solid var(--teal); color: var(--teal); }
-  .flow-box.a-no { background: #fef3e2; border: 1.5px solid var(--rose); color: var(--rose); }
+  .flow-box.a-no { background: var(--rose-soft); border: 1.5px solid var(--rose); color: var(--rose); }
   .flow-arrow {
     display: flex; justify-content: center; align-items: center;
     height: 32px; color: var(--slate-light); font-size: 18px;
@@ -572,7 +574,7 @@
   .do-box { background: var(--green-bg); border: 1px solid #a7d9d5; border-radius: 10px; padding: 20px; }
   .dont-box { background: var(--red-bg); border: 1px solid #e8c68a; border-radius: 10px; padding: 20px; }
   .do-box h3 { color: #0d7a5f; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
-  .dont-box h3 { color: #92400e; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+  .dont-box h3 { color: var(--rose); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
   .do-box ul, .dont-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
   .do-box li, .dont-box li { font-size: 13.5px; display: flex; gap: 8px; align-items: flex-start; }
   .do-box li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
@@ -667,7 +669,7 @@
     display: block; font-size: 10px; font-weight: 700;
     letter-spacing: .1em; text-transform: uppercase; margin-bottom: 6px;
   }
-  .idt-result-box.intern small { color: #92400e; }
+  .idt-result-box.intern small { color: var(--amber-dark); }
   .idt-result-box.anw small { color: var(--teal); }
   .idt-result-box.lap small { color: #1E656D; }
   .idt-result-box strong { font-size: 14px; color: var(--navy); display: block; margin-bottom: 4px; }
@@ -712,7 +714,7 @@
     text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 8px;
   }
   .idt-branch-label.y { background: #e6f4f2; color: #0d7a5f; }
-  .idt-branch-label.n { background: #fef3e2; color: #92400e; }
+  .idt-branch-label.n { background: #fef3e2; color: var(--amber-dark); }
   .idt-res {
     border-radius: 10px; padding: 14px 16px;
     text-align: center; width: 100%; font-size: 13px;
@@ -724,8 +726,8 @@
   .idt-res.blue small { color: #1E656D; }
   .idt-res.amber { background: #fef3e2; border: 1.5px solid var(--amber); color: var(--navy); }
   .idt-res.amber small { color: #B45309; }
-  .idt-res.rose { background: #fef3e2; border: 1.5px solid var(--rose); color: var(--navy); }
-  .idt-res.rose small { color: #92400e; }
+  .idt-res.rose { background: var(--rose-soft); border: 1.5px solid var(--rose); color: var(--navy); }
+  .idt-res.rose small { color: var(--rose); }
   .idt-line { width: 1px; height: 20px; background: var(--border); }
   .idt-sub-fork { display: flex; gap: 16px; width: 100%; }
   .idt-sub-branch { flex: 1; display: flex; flex-direction: column; align-items: center; }
@@ -795,7 +797,7 @@
   .note {
     background: #fef3e2; border: 1px solid #e8c68a;
     border-radius: 8px; padding: 12px 16px;
-    font-size: 13px; color: #92400e;
+    font-size: 13px; color: var(--amber-dark);
     display: flex; gap: 10px; align-items: flex-start;
     margin-top: 16px;
   }
@@ -807,12 +809,12 @@
     border: 1.5px solid #B45309;
     border-radius: 10px;
     padding: 12px 16px;
-    font-size: 13px; color: #92400e;
+    font-size: 13px; color: var(--amber-dark);
     display: flex; gap: 10px; align-items: flex-start;
     margin-top: 16px;
   }
   .pe010-alert-icon { flex-shrink: 0; font-size: 16px; }
-  .pe010-alert strong { color: #92400e; }
+  .pe010-alert strong { color: var(--amber-dark); }
 
   /* ── DOWNLOAD BUTTONS ── */
   .dl-bar {
@@ -1146,10 +1148,10 @@
 
       <!-- Toggle Interaktiv / Vollansicht -->
       <div class="idt-toggle" role="group" aria-label="Anzeigemodus">
-        <button class="idt-toggle-btn active" id="btn-interactive" onclick="setMode('interactive')" aria-pressed="true">
+        <button class="idt-toggle-btn active" id="btn-interactive" data-mode="interactive" aria-pressed="true">
           ▶ Schritt für Schritt
         </button>
-        <button class="idt-toggle-btn" id="btn-full" onclick="setMode('full')" aria-pressed="false">
+        <button class="idt-toggle-btn" id="btn-full" data-mode="full" aria-pressed="false">
           ⊞ Alles anzeigen
         </button>
       </div>
@@ -1165,91 +1167,91 @@
             <div class="q-sub">Rapport · Supervision · Intervision · Terminvereinbarung · Leistungserfassung</div>
           </div>
           <div class="idt-choices">
-            <button class="idt-choice yes-btn" onclick="showStep('result-intern')">Ja — intern</button>
-            <button class="idt-choice no-btn" onclick="showStep('step-2')">Nein — patientenbezogen</button>
+            <button class="idt-choice yes-btn" data-step="result-intern">Ja — intern</button>
+            <button class="idt-choice no-btn" data-step="step-2">Nein — patientenbezogen</button>
           </div>
         </div>
 
         <!-- Schritt 2 -->
         <div class="idt-step" id="step-2">
-          <button class="idt-back" onclick="showStep('step-1')">← Zurück</button>
+          <button class="idt-back" data-step="step-1">← Zurück</button>
           <div class="idt-q-box">
             <small>Frage 2 von 3</small>
             Ist der Patient / die Familie <strong>anwesend</strong>?
             <div class="q-sub">Synchron live / Telefon / Video = anwesend</div>
           </div>
           <div class="idt-choices">
-            <button class="idt-choice yes-btn" onclick="showStep('step-3a')">Ja — anwesend</button>
-            <button class="idt-choice no-btn" onclick="showStep('step-3b')">Nein — nicht anwesend</button>
+            <button class="idt-choice yes-btn" data-step="step-3a">Ja — anwesend</button>
+            <button class="idt-choice no-btn" data-step="step-3b">Nein — nicht anwesend</button>
           </div>
         </div>
 
         <!-- Schritt 3a: Anwesend -->
         <div class="idt-step" id="step-3a">
-          <button class="idt-back" onclick="showStep('step-2')">← Zurück</button>
+          <button class="idt-back" data-step="step-2">← Zurück</button>
           <div class="idt-q-box">
             <small>Frage 3 von 3</small>
             Was für ein <strong>Setting</strong>?
           </div>
           <div class="idt-choices" style="flex-wrap:wrap">
-            <button class="idt-choice" onclick="showStep('result-einzel')">Einzelsetting</button>
-            <button class="idt-choice" onclick="showStep('result-familie')">Familiensetting</button>
-            <button class="idt-choice" onclick="showStep('result-krise')">Krisensituation</button>
-            <button class="idt-choice" onclick="showStep('result-tele')">Video / Telefon</button>
+            <button class="idt-choice" data-step="result-einzel">Einzelsetting</button>
+            <button class="idt-choice" data-step="result-familie">Familiensetting</button>
+            <button class="idt-choice" data-step="result-krise">Krisensituation</button>
+            <button class="idt-choice" data-step="result-tele">Video / Telefon</button>
           </div>
         </div>
 
         <!-- Schritt 3b: Nicht anwesend -->
         <div class="idt-step" id="step-3b">
-          <button class="idt-back" onclick="showStep('step-2')">← Zurück</button>
+          <button class="idt-back" data-step="step-2">← Zurück</button>
           <div class="idt-q-box">
             <small>Frage 3 von 3</small>
             Was für eine <strong>Abwesenheitsleistung</strong>?
           </div>
           <div class="idt-choices" style="flex-wrap:wrap">
-            <button class="idt-choice" onclick="showStep('result-akten')">Akten lesen</button>
-            <button class="idt-choice" onclick="showStep('result-dritte')">Kontakt Dritte</button>
-            <button class="idt-choice" onclick="showStep('result-angeh')">Elterntelefonat</button>
-            <button class="idt-choice" onclick="showStep('result-plan')">Hilfeplanung</button>
-            <button class="idt-choice" onclick="showStep('result-wegzeit')">Wegzeit</button>
-            <button class="idt-choice" onclick="showStep('result-email')">E-Mail / zeitversetzt</button>
+            <button class="idt-choice" data-step="result-akten">Akten lesen</button>
+            <button class="idt-choice" data-step="result-dritte">Kontakt Dritte</button>
+            <button class="idt-choice" data-step="result-angeh">Elterntelefonat</button>
+            <button class="idt-choice" data-step="result-plan">Hilfeplanung</button>
+            <button class="idt-choice" data-step="result-wegzeit">Wegzeit</button>
+            <button class="idt-choice" data-step="result-email">E-Mail / zeitversetzt</button>
           </div>
         </div>
 
         <!-- RESULTATE -->
         <div class="idt-step" id="result-intern">
-          <button class="idt-back" onclick="showStep('step-1')">← Zurück</button>
+          <button class="idt-back" data-step="step-1">← Zurück</button>
           <div class="idt-result-box intern">
             <small>Resultat</small>
             <strong>Nicht verrechenbar — intern verbuchen</strong>
             <p>Rapport, Supervision, Intervision, Terminvereinbarungen und Leistungserfassung am PC sind keine abrechenbaren Patientenleistungen.</p>
           </div>
-          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+          <button class="idt-restart" data-step="step-1">↺ Neue Leistung prüfen</button>
         </div>
 
         <div class="idt-step" id="result-einzel">
-          <button class="idt-back" onclick="showStep('step-3a')">← Zurück</button>
+          <button class="idt-back" data-step="step-3a">← Zurück</button>
           <div class="idt-result-box anw">
             <small>EA.05.0010 · Anwesenheitsleistung</small>
             <strong>Ambulante Behandlung · Einzelsetting</strong>
             <p>Patient allein anwesend. Pro Minute abrechenbar.</p>
             <ul><li>Inkludiert: Begrüssung, Verabschiedung, unmittelbare Akteneinsicht</li></ul>
           </div>
-          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+          <button class="idt-restart" data-step="step-1">↺ Neue Leistung prüfen</button>
         </div>
 
         <div class="idt-step" id="result-familie">
-          <button class="idt-back" onclick="showStep('step-3a')">← Zurück</button>
+          <button class="idt-back" data-step="step-3a">← Zurück</button>
           <div class="idt-result-box anw">
             <small>EA.05.0030 · Anwesenheitsleistung</small>
             <strong>Ambulante Behandlung · Familiensetting</strong>
             <p>Patient + Eltern / Bezugspersonen anwesend. Gleiche Inklusionslogik wie 0010.</p>
           </div>
-          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+          <button class="idt-restart" data-step="step-1">↺ Neue Leistung prüfen</button>
         </div>
 
         <div class="idt-step" id="result-krise">
-          <button class="idt-back" onclick="showStep('step-3a')">← Zurück</button>
+          <button class="idt-back" data-step="step-3a">← Zurück</button>
           <div class="idt-result-box" style="background:#fef3e2;border-color:#e8c68a;border-width:2px">
             <small style="color:#92400e">EA.05.0050 · Krisenintervention</small>
             <strong style="color:var(--navy)">Krisenintervention</strong>
@@ -1259,33 +1261,33 @@
               <li style="font-size:13px;color:#92400e;display:flex;gap:6px"><span>⊘</span> Nicht kumulierbar mit 0010 / 0030 in derselben Sitzung</li>
             </ul>
           </div>
-          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+          <button class="idt-restart" data-step="step-1">↺ Neue Leistung prüfen</button>
         </div>
 
         <div class="idt-step" id="result-tele">
-          <button class="idt-back" onclick="showStep('step-3a')">← Zurück</button>
+          <button class="idt-back" data-step="step-3a">← Zurück</button>
           <div class="idt-result-box anw">
             <small>EA.05.0070 · Anwesenheitsleistung</small>
             <strong>Telemedizin synchron</strong>
             <p>Video / Telefon als echte Behandlung in Echtzeit. Patient ist virtuell anwesend.</p>
             <ul><li>Max. 1× pro Tag abrechenbar</li></ul>
           </div>
-          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+          <button class="idt-restart" data-step="step-1">↺ Neue Leistung prüfen</button>
         </div>
 
         <div class="idt-step" id="result-akten">
-          <button class="idt-back" onclick="showStep('step-3b')">← Zurück</button>
+          <button class="idt-back" data-step="step-3b">← Zurück</button>
           <div class="idt-result-box lap">
             <small>EA.05.0100 · LAP-Topf</small>
             <strong>Fremdaktenstudium</strong>
             <p>Nur externe Akten: Schulbericht, IV, frühere Klinik, SPD, Behörde.</p>
             <ul><li>Eigene Verlaufsnotizen nachlesen zählt nicht</li></ul>
           </div>
-          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+          <button class="idt-restart" data-step="step-1">↺ Neue Leistung prüfen</button>
         </div>
 
         <div class="idt-step" id="result-dritte">
-          <button class="idt-back" onclick="showStep('step-3b')">← Zurück</button>
+          <button class="idt-back" data-step="step-3b">← Zurück</button>
           <div class="idt-result-box lap">
             <small>EA.05.0110 / 0130 · LAP-Topf</small>
             <strong>Auskünfte / Besprechungen</strong>
@@ -1296,33 +1298,33 @@
               <li>Nicht: reine Terminvereinbarungen</li>
             </ul>
           </div>
-          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+          <button class="idt-restart" data-step="step-1">↺ Neue Leistung prüfen</button>
         </div>
 
         <div class="idt-step" id="result-angeh">
-          <button class="idt-back" onclick="showStep('step-3b')">← Zurück</button>
+          <button class="idt-back" data-step="step-3b">← Zurück</button>
           <div class="idt-result-box lap">
             <small>EA.05.0120 · LAP-Topf</small>
             <strong>Auskünfte an/von Angehörigen</strong>
             <p>Inhaltliches Telefonat mit Eltern / Bezugspersonen ohne Patient.</p>
             <ul><li>Nur fachlicher Inhalt, nicht reine Organisation</li></ul>
           </div>
-          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+          <button class="idt-restart" data-step="step-1">↺ Neue Leistung prüfen</button>
         </div>
 
         <div class="idt-step" id="result-plan">
-          <button class="idt-back" onclick="showStep('step-3b')">← Zurück</button>
+          <button class="idt-back" data-step="step-3b">← Zurück</button>
           <div class="idt-result-box lap">
             <small>EA.05.0140 · LAP-Topf</small>
             <strong>Schriftliche Therapie-/Hilfeplanung</strong>
             <p>Hilfeplan, Netzplan, Krisenplan, Austrittsplanung.</p>
             <ul><li>Das Ergebnis muss schriftlich in der Akte vorhanden sein!</li></ul>
           </div>
-          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+          <button class="idt-restart" data-step="step-1">↺ Neue Leistung prüfen</button>
         </div>
 
         <div class="idt-step" id="result-email">
-          <button class="idt-back" onclick="showStep('step-3b')">← Zurück</button>
+          <button class="idt-back" data-step="step-3b">← Zurück</button>
           <div class="idt-result-box" style="background:#fef3e2;border-color:#e8c68a;border-width:2px">
             <small style="color:#B45309">EA.05.0080 · LAP-Topf</small>
             <strong style="color:var(--navy)">Telemedizin zeitversetzt</strong>
@@ -1334,11 +1336,11 @@
               <li style="font-size:13px;color:#92400e;display:flex;gap:6px"><span>!</span> Entspricht dem <strong>Email-Reglement der Klinik</strong> beachten</li>
             </ul>
           </div>
-          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+          <button class="idt-restart" data-step="step-1">↺ Neue Leistung prüfen</button>
         </div>
 
         <div class="idt-step" id="result-wegzeit">
-          <button class="idt-back" onclick="showStep('step-3b')">← Zurück</button>
+          <button class="idt-back" data-step="step-3b">← Zurück</button>
           <div class="idt-result-box" style="background:#fef3e2;border-color:#e8c68a;border-width:2px">
             <small style="color:#B45309">EA.05.0060 · Wegzeit</small>
             <strong style="color:var(--navy)">Wegzeit</strong>
@@ -1349,7 +1351,7 @@
               <li style="font-size:13px;color:#B45309;display:flex;gap:6px"><span>→</span> Gespräch separat buchen</li>
             </ul>
           </div>
-          <button class="idt-restart" onclick="showStep('step-1')">↺ Neue Leistung prüfen</button>
+          <button class="idt-restart" data-step="step-1">↺ Neue Leistung prüfen</button>
         </div>
 
       </div><!-- /idt-interactive -->
@@ -1843,10 +1845,10 @@
 <!-- FOOTER -->
 <footer class="footer">
   <span>Tarif-Kompass 2026 · Soziale Arbeit KJPP-Tagesklinik · Nichtärztliche Mitarbeitende</span>
-  <span>Referenz: TARDOC Kapitel EA.05 · Gültig ab 01.01.2026 · Stand Website: <span id="footer-date">16.03.2026</span> · Basierend auf Quelldokument vom 12.03.2026</span>
+  <span>Referenz: TARDOC Kapitel EA.05 · Gültig ab 01.01.2026 · Stand Website: 16.03.2026 · Basierend auf Quelldokument vom 12.03.2026</span>
   <div style="width:100%;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);font-size:12px;color:#78716C;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
     <span>Psychologinnen-Version: <a href="https://tardoc-psychologiekjpp.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:#78716C;text-decoration:underline">tardoc-psychologiekjpp.netlify.app</a></span>
-    <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" style="color:#1E656D;text-decoration:none;font-weight:600;font-size:12px;display:inline-flex;align-items:center;gap:4px">&#8593; Nach oben</a>
+    <a href="#" id="scroll-top" style="color:#1E656D;text-decoration:none;font-weight:600;font-size:12px;display:inline-flex;align-items:center;gap:4px">&#8593; Nach oben</a>
   </div>
 </footer>
 
@@ -1876,6 +1878,24 @@
       btnF.classList.add('active'); btnF.setAttribute('aria-pressed','true');
     }
   }
+
+  // ── EVENT DELEGATION: data-step → showStep() ──
+  document.querySelector('.idt').addEventListener('click', function(e) {
+    var btn = e.target.closest('[data-step]');
+    if (btn) showStep(btn.dataset.step);
+  });
+
+  // ── EVENT DELEGATION: data-mode → setMode() ──
+  document.querySelector('.idt-toggle').addEventListener('click', function(e) {
+    var btn = e.target.closest('[data-mode]');
+    if (btn) setMode(btn.dataset.mode);
+  });
+
+  // ── SCROLL-TO-TOP ──
+  document.getElementById('scroll-top').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
 
   // ── MOBILE BOTTOM SHEET ──
   const bottomNavBtn = document.getElementById('bottom-nav-btn');
