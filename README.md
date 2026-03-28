@@ -15,7 +15,7 @@ Dieser Kompass richtet sich an nichtärztliche Fachpersonen (Soziale Arbeit) in 
 
 ## Schnellstart
 
-Öffne `index.html` direkt im Browser – keine Installation nötig. Die Seite funktioniert vollständig offline.
+Öffne `index.html` (oder `tarif-kompass-2026.html`) direkt im Browser – keine Installation nötig. Die Seite funktioniert vollständig offline.
 
 ```bash
 # Einfach lokal öffnen:
